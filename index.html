@@ -73,7 +73,7 @@ ul{list-style:none}
 
 /* Background canvas + grain + vignette */
 #webgl{position:fixed;inset:0;width:100%;height:100%;z-index:-2;pointer-events:none;opacity:0}
-.grain{position:fixed;inset:-50%;width:200%;height:200%;z-index:2000;pointer-events:none;opacity:.05;
+.grain{position:fixed;inset:-50%;width:200%;height:200%;z-index:4000;pointer-events:none;opacity:.05;
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 .vignette{position:fixed;inset:0;z-index:-1;pointer-events:none;
@@ -82,6 +82,15 @@ ul{list-style:none}
 /* Split-text masks (built by JS) */
 .msk{display:inline-block;overflow:hidden;vertical-align:top;padding-bottom:.12em;margin-bottom:-.12em}
 .msk-i{display:inline-block;will-change:transform}
+.hero-title.revealed .msk,[data-split].split-done .msk{overflow:visible}
+
+/* Side HUD: section index + scroll progress */
+.hud{position:fixed;right:26px;top:50%;transform:translateY(-50%);z-index:800;display:flex;flex-direction:column;align-items:center;gap:14px;pointer-events:none}
+.hud-sec{writing-mode:vertical-rl;font-family:var(--font-m);font-size:10px;letter-spacing:.26em;color:var(--muted);text-transform:uppercase;white-space:nowrap}
+.hud-track{width:1px;height:110px;background:var(--line-soft);position:relative;overflow:hidden}
+.hud-track i{position:absolute;inset:0;background:var(--accent);transform:scaleY(0);transform-origin:top center}
+.hud-pct{font-family:var(--font-m);font-size:10px;letter-spacing:.1em;color:var(--muted);font-variant-numeric:tabular-nums}
+@media (max-width:1279px){.hud{display:none}}
 
 /* ==========================================================================
    03. PRELOADER
@@ -100,11 +109,15 @@ ul{list-style:none}
 @media (hover:hover) and (pointer:fine){
   #cur-dot,#cur-ring{display:block}
 }
-#cur-dot i,#cur-ring i{display:block;border-radius:50%;transform:translate(-50%,-50%);transition:transform .35s var(--ease),background-color .35s,border-color .35s,opacity .35s}
+#cur-dot i,#cur-ring i{display:block;border-radius:50%;transform:translate(-50%,-50%);transition:transform .35s var(--ease),width .35s var(--ease),height .35s var(--ease),background-color .35s,border-color .35s,opacity .35s}
 #cur-dot i{width:7px;height:7px;background:var(--accent)}
-#cur-ring i{width:38px;height:38px;border:1px solid rgba(236,233,226,.4)}
+#cur-ring i{width:38px;height:38px;border:1px solid rgba(236,233,226,.4);display:flex;align-items:center;justify-content:center}
+#cur-label{display:none;font-family:var(--font-m);font-style:normal;font-weight:500;font-size:10px;letter-spacing:.16em;color:#0a0a09;white-space:nowrap}
 body.is-hovering #cur-dot i{transform:translate(-50%,-50%) scale(.4)}
 body.is-hovering #cur-ring i{transform:translate(-50%,-50%) scale(1.9);background:rgba(236,233,226,.92);border-color:transparent;mix-blend-mode:difference}
+body.cursor-labeled #cur-dot i{opacity:0}
+body.cursor-labeled #cur-ring i{transform:translate(-50%,-50%) scale(1);width:88px;height:88px;background:var(--accent);border-color:transparent;mix-blend-mode:normal}
+body.cursor-labeled #cur-label{display:block}
 
 /* ==========================================================================
    05. NAV + MENU
@@ -230,7 +243,9 @@ body.is-hovering #cur-ring i{transform:translate(-50%,-50%) scale(1.9);backgroun
 .proj-track{display:flex;gap:clamp(18px,2.2vw,32px);padding:0 var(--pad);width:max-content;will-change:transform}
 .proj-card{width:clamp(500px,46vw,680px);height:min(64vh,620px);flex-shrink:0;border:1px solid var(--line-soft);border-radius:22px;background:var(--panel);overflow:hidden;display:flex;flex-direction:column;transition:border-color .4s}
 .proj-card:hover{border-color:var(--line)}
-.proj-cover{position:relative;flex:1;min-height:0;background:var(--panel-2);color:var(--muted);overflow:hidden;border-bottom:1px solid var(--line-soft)}
+.proj-card:hover .proj-cover{transform:scale(1.025)}
+.proj-card:hover .proj-num{-webkit-text-stroke-color:var(--accent)}
+.proj-cover{position:relative;flex:1;min-height:0;background:var(--panel-2);color:var(--muted);overflow:hidden;border-bottom:1px solid var(--line-soft);transition:transform .7s var(--ease)}
 .cover-art{position:absolute;inset:-6%;width:112%;height:112%}
 .proj-num{position:absolute;right:18px;bottom:6px;font-family:var(--font-d);font-weight:800;font-size:clamp(64px,7vw,110px);line-height:1;color:transparent;-webkit-text-stroke:1px var(--line);pointer-events:none}
 .proj-info{padding:clamp(20px,2.6vw,34px)}
@@ -265,10 +280,30 @@ body.is-hovering #cur-ring i{transform:translate(-50%,-50%) scale(1.9);backgroun
 .skill-tags span{font-family:var(--font-b);font-size:14px;font-weight:500;border:1px solid var(--line-soft);border-radius:100px;padding:10px 20px;color:var(--muted);transition:color .3s,border-color .3s,background-color .3s,transform .3s var(--ease)}
 .skill-tags span:hover{color:#0a0a09;background:var(--ink);border-color:var(--ink);transform:translateY(-2px)}
 
+/* Physics playground (desktop enhancement; static rows remain for SR/mobile) */
+.sr-static{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+.skills-lab[hidden]{display:none}
+.lab-legend{display:flex;flex-wrap:wrap;gap:10px 26px;margin-bottom:18px;font-family:var(--font-m);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+.lab-legend i{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:8px;vertical-align:middle}
+.lab-legend .l1 i{background:var(--accent)}
+.lab-legend .l2 i{background:var(--ink)}
+.lab-legend .l3 i{background:transparent;border:1px solid var(--accent)}
+.lab-legend .l4 i{background:transparent;border:1px solid var(--muted)}
+.lab-stage{position:relative;height:clamp(420px,58vh,560px);border:1px solid var(--line-soft);border-radius:22px;background-color:rgba(17,17,15,.5);overflow:hidden;background-image:linear-gradient(var(--line-soft) 1px,transparent 1px),linear-gradient(90deg,var(--line-soft) 1px,transparent 1px);background-size:44px 44px}
+.lab-pill{position:absolute;left:0;top:0;pointer-events:none;user-select:none;-webkit-user-select:none;white-space:nowrap;font-family:var(--font-m);font-size:12.5px;letter-spacing:.06em;padding:11px 20px;border-radius:100px;will-change:transform;opacity:0}
+.lab-pill.cat-0{background:var(--accent);color:#0a0a09}
+.lab-pill.cat-1{background:var(--ink);color:#0a0a09}
+.lab-pill.cat-2{background:rgba(10,10,9,.75);border:1px solid var(--accent);color:var(--accent)}
+.lab-pill.cat-3{background:rgba(10,10,9,.75);border:1px solid var(--line);color:var(--muted)}
+.lab-note{position:absolute;left:18px;bottom:14px;font-family:var(--font-m);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);pointer-events:none}
+.lab-reset{position:absolute;right:14px;top:14px;z-index:5;font-family:var(--font-m);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);border:1px solid var(--line-soft);border-radius:100px;padding:9px 16px;transition:color .3s,border-color .3s}
+.lab-reset:hover{color:var(--accent);border-color:var(--accent)}
+
 /* ==========================================================================
    14. CONTACT
    ========================================================================== */
 .contact{text-align:center;padding-top:clamp(110px,16vh,200px)}
+.contact::before{content:'';position:absolute;left:50%;top:42%;width:min(760px,90vw);height:min(760px,90vw);transform:translate(-50%,-50%);background:radial-gradient(circle,rgba(255,77,18,.13),transparent 62%);pointer-events:none;z-index:-1}
 .contact .sec-label{justify-content:center}
 .contact-title{font-family:var(--font-d);font-weight:800;font-size:clamp(46px,9.5vw,150px);line-height:.95;letter-spacing:-.02em;text-transform:uppercase;margin-bottom:clamp(28px,4vh,44px)}
 .contact-lede{max-width:620px;margin:0 auto clamp(40px,6vh,60px);color:var(--muted);font-size:clamp(15px,1.8vw,18px);line-height:1.7}
@@ -277,8 +312,9 @@ body.is-hovering #cur-ring i{transform:translate(-50%,-50%) scale(1.9);backgroun
 .contact-mail span{font-family:var(--font-m);transition:transform .35s var(--ease)}
 .contact-mail:hover span{transform:translate(3px,-3px)}
 .contact-socials{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-top:clamp(32px,5vh,48px)}
-.contact-socials a{display:inline-flex;align-items:center;gap:8px;font-family:var(--font-m);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);border:1px solid var(--line-soft);border-radius:100px;padding:13px 24px;transition:color .3s,border-color .3s}
-.contact-socials a:hover{color:var(--ink);border-color:var(--accent)}
+.contact-socials a,.contact-socials button{display:inline-flex;align-items:center;gap:8px;font-family:var(--font-m);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);border:1px solid var(--line-soft);border-radius:100px;padding:13px 24px;transition:color .3s,border-color .3s}
+.contact-socials a:hover,.contact-socials button:hover{color:var(--ink);border-color:var(--accent)}
+.contact-socials button.ok{color:var(--accent);border-color:var(--accent)}
 
 /* ==========================================================================
    15. FOOTER
@@ -337,7 +373,13 @@ body.is-hovering #cur-ring i{transform:translate(-50%,-50%) scale(1.9);backgroun
 </div>
 
 <div id="cur-dot" aria-hidden="true"><i></i></div>
-<div id="cur-ring" aria-hidden="true"><i></i></div>
+<div id="cur-ring" aria-hidden="true"><i><b id="cur-label"></b></i></div>
+
+<aside class="hud" id="hud" aria-hidden="true">
+  <span class="hud-sec" id="hud-sec">00 — INTRO</span>
+  <span class="hud-track"><i id="hud-fill"></i></span>
+  <span class="hud-pct" id="hud-pct">000</span>
+</aside>
 
 <header class="nav" id="nav">
   <a href="#hero" class="nav-logo" aria-label="Moshe Sarig — home">M—S<sup>©26</sup></a>
@@ -378,7 +420,7 @@ body.is-hovering #cur-ring i{transform:translate(-50%,-50%) scale(1.9);backgroun
   <!-- HERO -->
   <section class="hero" id="hero">
     <div class="hero-inner">
-      <p class="hero-eyebrow"><span class="dot"></span>Open to student &amp; part-time roles<span class="sep">—</span>Jerusalem, IL</p>
+      <p class="hero-eyebrow"><span class="dot"></span><span class="scr">Open to student &amp; part-time roles</span><span class="sep">—</span><span class="scr">Jerusalem, IL</span></p>
       <h1 class="hero-title">
         <span class="hero-line">Moshe</span>
         <span class="hero-line hero-line--outline">Sarig<span class="hero-dot">.</span></span>
@@ -438,7 +480,7 @@ body.is-hovering #cur-ring i{transform:translate(-50%,-50%) scale(1.9);backgroun
       <div class="xp-when">Jun 2025 — Present<br>Jerusalem, IL</div>
       <div>
         <h3 class="xp-role">Student Developer — Full-Stack &amp; Secure Systems</h3>
-        <a class="xp-org" href="https://www.gsi.gov.il" target="_blank" rel="noopener">Geological Survey of Israel (GSI) ↗</a>
+        <a class="xp-org" data-cursor-label="VISIT" href="https://www.gsi.gov.il" target="_blank" rel="noopener">Geological Survey of Israel (GSI) ↗</a>
         <ul class="xp-list">
           <li>Designed and shipped <strong>Silica</strong> — a production IT inventory management system on an air-gapped network, acting as sole developer.</li>
           <li>Processing raw <strong>LiDAR flight data</strong> from aerial surveys over the Dead Sea into 3D terrain models and research graphs.</li>
@@ -455,7 +497,7 @@ body.is-hovering #cur-ring i{transform:translate(-50%,-50%) scale(1.9);backgroun
       <div class="xp-when">2025 — Present<br>Jerusalem, IL</div>
       <div>
         <h3 class="xp-role">Webmaster / Website Manager</h3>
-        <a class="xp-org" href="https://www.igs.org.il/" target="_blank" rel="noopener">Israel Geological Society (IGS) ↗</a>
+        <a class="xp-org" data-cursor-label="VISIT" href="https://www.igs.org.il/" target="_blank" rel="noopener">Israel Geological Society (IGS) ↗</a>
         <ul class="xp-list">
           <li>Managing and maintaining the official organizational website built on the <strong>Wix</strong> platform.</li>
           <li>Responsible for content updates, event publishing, and a seamless user experience for society members.</li>
@@ -492,7 +534,7 @@ body.is-hovering #cur-ring i{transform:translate(-50%,-50%) scale(1.9);backgroun
           <p class="sec-label" data-reveal><span class="sec-num">03</span>Projects</p>
           <h2 class="sec-title" data-split>Selected <em>work</em></h2>
         </div>
-        <span class="proj-counter" data-reveal><b>03</b> PROJECTS — SCROLL</span>
+        <span class="proj-counter" data-reveal><b id="proj-cur">01</b> / 04 — SCROLL</span>
       </div>
       <div class="proj-track" id="proj-track">
 
@@ -552,7 +594,7 @@ body.is-hovering #cur-ring i{transform:translate(-50%,-50%) scale(1.9);backgroun
           </div>
         </article>
 
-        <a class="proj-end" href="https://github.com/Moshiko-Sarig" target="_blank" rel="noopener">
+        <a class="proj-end" data-cursor-label="OPEN" href="https://github.com/Moshiko-Sarig" target="_blank" rel="noopener">
           <b>↗</b>
           <span>More on GitHub</span>
         </a>
@@ -596,6 +638,7 @@ body.is-hovering #cur-ring i{transform:translate(-50%,-50%) scale(1.9);backgroun
       <p class="sec-label" data-reveal><span class="sec-num">05</span>Skills</p>
       <h2 class="sec-title" data-split>Tools <em>of the</em> trade</h2>
     </div>
+    <div id="skills-static">
     <div class="line-draw"></div>
     <div class="skill-row" data-reveal>
       <span class="skill-cat"><i>(01)</i>Frontend</span>
@@ -617,6 +660,20 @@ body.is-hovering #cur-ring i{transform:translate(-50%,-50%) scale(1.9);backgroun
       <div class="skill-tags"><span>Docker</span><span>GitLab CI/CD</span><span>WSL / Linux</span><span>Bash Scripting</span><span>Git</span></div>
     </div>
     <div class="line-draw"></div>
+    </div>
+
+    <div class="skills-lab" id="skills-lab" hidden>
+      <ul class="lab-legend" aria-hidden="true">
+        <li class="l1"><i></i>Frontend</li>
+        <li class="l2"><i></i>Backend</li>
+        <li class="l3"><i></i>Databases</li>
+        <li class="l4"><i></i>DevOps &amp; Tools</li>
+      </ul>
+      <div class="lab-stage" id="lab-stage" data-hover data-cursor-label="DRAG" aria-hidden="true">
+        <button type="button" class="lab-reset" id="lab-reset" tabindex="-1">↺ Reset</button>
+        <span class="lab-note">Physics enabled — grab a tool</span>
+      </div>
+    </div>
   </section>
 
   <!-- CONTACT -->
@@ -624,11 +681,12 @@ body.is-hovering #cur-ring i{transform:translate(-50%,-50%) scale(1.9);backgroun
     <p class="sec-label" data-reveal><span class="sec-num">06</span>Contact</p>
     <h2 class="contact-title" data-split>Let's build <em>something</em> great</h2>
     <p class="contact-lede" data-reveal>Open to student and part-time roles, collaborations, and complex systems architecture problems. Whether you have a challenging position in mind or just want to talk about tech — I'd love to hear from you.</p>
-    <a class="contact-mail magnetic" data-reveal href="mailto:moshikosarig1@gmail.com">moshikosarig1@gmail.com <span>↗</span></a>
+    <a class="contact-mail magnetic" data-cursor-label="WRITE" data-reveal href="mailto:moshikosarig1@gmail.com">moshikosarig1@gmail.com <span>↗</span></a>
     <ul class="contact-socials" data-reveal>
-      <li><a href="https://www.linkedin.com/in/moshe-sarig-675847349/" target="_blank" rel="noopener">LinkedIn ↗</a></li>
-      <li><a href="https://github.com/Moshiko-Sarig" target="_blank" rel="noopener">GitHub ↗</a></li>
+      <li><a data-cursor-label="OPEN" href="https://www.linkedin.com/in/moshe-sarig-675847349/" target="_blank" rel="noopener">LinkedIn ↗</a></li>
+      <li><a data-cursor-label="OPEN" href="https://github.com/Moshiko-Sarig" target="_blank" rel="noopener">GitHub ↗</a></li>
       <li><a href="tel:+972503069494">050-306-9494</a></li>
+      <li><button type="button" id="copy-mail" data-mail="moshikosarig1@gmail.com">Copy email</button></li>
     </ul>
   </section>
 </main>
@@ -646,6 +704,7 @@ body.is-hovering #cur-ring i{transform:translate(-50%,-50%) scale(1.9);backgroun
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/matter-js@0.19.0/build/matter.min.js"></script>
 <script>
 (function(){
 'use strict';
@@ -656,6 +715,7 @@ var SMALL = window.innerWidth < 768;
 var scrollP = 0; // global scroll progress 0..1
 var lenis = null;
 var preDone = false;
+var LAB = false; // physics skills playground active
 
 function qs(s, c){ return (c || document).querySelector(s); }
 function qsa(s, c){ return Array.prototype.slice.call((c || document).querySelectorAll(s)); }
@@ -664,6 +724,28 @@ function killPreloader(){
   var p = qs('#preloader');
   if (p && p.parentNode) p.parentNode.removeChild(p);
   preDone = true;
+}
+
+/* ------------------------------------------------------------------
+   Terminal-style text decode
+------------------------------------------------------------------ */
+var SCR_CHARS = '█▓▒░<>/+*#';
+function scramble(el, finalText, dur){
+  if (!el) return;
+  if (REDUCED){ el.textContent = finalText; return; }
+  var len = finalText.length;
+  var t0 = Date.now();
+  function step(){
+    var p = Math.min(1, (Date.now() - t0) / dur);
+    var reveal = Math.floor(p * len), out = '';
+    for (var i = 0; i < len; i++){
+      out += i < reveal ? finalText[i]
+           : (finalText[i] === ' ' ? ' ' : SCR_CHARS[(Math.random() * SCR_CHARS.length) | 0]);
+    }
+    el.textContent = out;
+    if (p < 1) requestAnimationFrame(step);
+  }
+  requestAnimationFrame(step);
 }
 
 /* ------------------------------------------------------------------
@@ -762,11 +844,69 @@ function initCursor(){
     ry += (y - ry) * 0.16;
     ring.style.transform = 'translate(' + rx + 'px,' + ry + 'px)';
   });
+  var label = qs('#cur-label');
   document.addEventListener('mouseover', function(e){
-    if (e.target.closest && e.target.closest('a, button, [data-hover]')) document.body.classList.add('is-hovering');
+    if (!e.target.closest) return;
+    if (e.target.closest('a, button, [data-hover]')) document.body.classList.add('is-hovering');
+    var lt = e.target.closest('[data-cursor-label]');
+    if (lt && label){
+      label.textContent = lt.getAttribute('data-cursor-label');
+      document.body.classList.add('cursor-labeled');
+    }
   });
   document.addEventListener('mouseout', function(e){
-    if (e.target.closest && e.target.closest('a, button, [data-hover]')) document.body.classList.remove('is-hovering');
+    if (!e.target.closest) return;
+    if (e.target.closest('a, button, [data-hover]')) document.body.classList.remove('is-hovering');
+    if (e.target.closest('[data-cursor-label]')) document.body.classList.remove('cursor-labeled');
+  });
+}
+
+/* ------------------------------------------------------------------
+   Letters spring up under the cursor (after their reveal completes)
+------------------------------------------------------------------ */
+function initCharHover(){
+  if (!FINE || REDUCED || !window.gsap) return;
+  ['.hero-title', '.contact-title'].forEach(function(sel){
+    var container = qs(sel);
+    if (!container) return;
+    container.addEventListener('mouseover', function(e){
+      var ch = e.target;
+      if (!ch.classList || !ch.classList.contains('msk-i') || ch.getAttribute('data-busy')) return;
+      if (!container.classList.contains('revealed') && !container.classList.contains('split-done')) return;
+      ch.setAttribute('data-busy', '1');
+      gsap.timeline({ onComplete: function(){ ch.removeAttribute('data-busy'); } })
+        .to(ch, { yPercent: -24, duration: 0.16, ease: 'power2.out' })
+        .to(ch, { yPercent: 0, duration: 0.6, ease: 'elastic.out(1.2, 0.5)' });
+    });
+  });
+}
+
+/* ------------------------------------------------------------------
+   Copy email to clipboard
+------------------------------------------------------------------ */
+function initCopyMail(){
+  var btn = qs('#copy-mail');
+  if (!btn) return;
+  var idle = btn.textContent;
+  function done(ok){
+    btn.textContent = ok ? 'Copied ✓' : 'Copy failed';
+    btn.classList.toggle('ok', ok);
+    setTimeout(function(){ btn.textContent = idle; btn.classList.remove('ok'); }, 1600);
+  }
+  btn.addEventListener('click', function(){
+    var mail = btn.getAttribute('data-mail') || '';
+    if (navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(mail).then(function(){ done(true); }, function(){ done(false); });
+    } else {
+      var ta = document.createElement('textarea');
+      ta.value = mail;
+      document.body.appendChild(ta);
+      ta.select();
+      var ok = false;
+      try { ok = document.execCommand('copy'); } catch(e){}
+      document.body.removeChild(ta);
+      done(ok);
+    }
   });
 }
 
@@ -843,6 +983,127 @@ function initAnchors(){
 }
 
 /* ------------------------------------------------------------------
+   Skills physics playground (Matter.js, desktop only)
+   Static rows stay in the DOM (visually hidden) for SR + fallback.
+------------------------------------------------------------------ */
+var labState = null;
+
+function prepLab(){
+  try {
+    var staticEl = qs('#skills-static'), lab = qs('#skills-lab'), stage = qs('#lab-stage');
+    if (!staticEl || !lab || !stage) return false;
+    var data = [];
+    qsa('.skill-row', staticEl).forEach(function(row, ci){
+      qsa('.skill-tags span', row).forEach(function(t){ data.push({ t: t.textContent, c: ci }); });
+    });
+    if (!data.length) return false;
+    data.forEach(function(d){
+      var s = document.createElement('span');
+      s.className = 'lab-pill cat-' + d.c;
+      s.textContent = d.t;
+      stage.appendChild(s);
+    });
+    staticEl.classList.add('sr-static');
+    lab.hidden = false;
+    return true;
+  } catch(e){ return false; }
+}
+
+function revertLab(){
+  var staticEl = qs('#skills-static'), lab = qs('#skills-lab');
+  if (staticEl) staticEl.classList.remove('sr-static');
+  if (lab) lab.hidden = true;
+  LAB = false;
+}
+
+function initLabPhysics(){
+  if (labState) return;
+  try {
+    var M = window.Matter, stage = qs('#lab-stage');
+    var pills = qsa('.lab-pill', stage);
+    var W = stage.clientWidth || 800, H = stage.clientHeight || 480;
+    var engine = M.Engine.create({ enableSleeping: true });
+    var world = engine.world;
+    function wall(x, y, w, h){ return M.Bodies.rectangle(x, y, w, h, { isStatic: true }); }
+    // floor + tall side walls (no ceiling: tossed pills fall back in)
+    var walls = [wall(W / 2, H + 100, W * 3 + 400, 200), wall(-100, -H, 200, H * 8), wall(W + 100, -H, 200, H * 8)];
+    M.Composite.add(world, walls);
+
+    var bodies = [];
+    pills.forEach(function(el, i){
+      var w = el.offsetWidth || (el.textContent.length * 9 + 44);
+      var h = el.offsetHeight || 40;
+      var x = 50 + Math.random() * Math.max(W - 100, 100);
+      var b = M.Bodies.rectangle(x, -40 - i * 54, w, h, {
+        chamfer: { radius: Math.min(h / 2, 19) },
+        restitution: 0.35, friction: 0.4, frictionAir: 0.012,
+        angle: (Math.random() - 0.5) * 0.4
+      });
+      bodies.push(b);
+      setTimeout(function(){
+        M.Composite.add(world, b);
+        el.style.opacity = '1';
+      }, i * 70);
+    });
+
+    var mouse = M.Mouse.create(stage);
+    var mc = M.MouseConstraint.create(engine, { mouse: mouse, constraint: { stiffness: 0.15, render: { visible: false } } });
+    M.Composite.add(world, mc);
+    // Matter's mouse captures wheel events and blocks page scroll — undo that
+    ['mousewheel', 'DOMMouseScroll', 'wheel'].forEach(function(ev){
+      try { stage.removeEventListener(ev, mouse.mousewheel); } catch(e){}
+    });
+
+    labState = { inView: true };
+    var fc = 0;
+    gsap.ticker.add(function(t, dt){
+      if (!labState.inView) return;
+      M.Engine.update(engine, Math.min(dt || 16.7, 33));
+      for (var i = 0; i < bodies.length; i++){
+        var b = bodies[i];
+        pills[i].style.transform = 'translate(' + b.position.x.toFixed(1) + 'px,' + b.position.y.toFixed(1) +
+                                   'px) translate(-50%,-50%) rotate(' + b.angle.toFixed(3) + 'rad)';
+      }
+      if (++fc % 150 === 0){
+        var W2 = stage.clientWidth || W, H2 = stage.clientHeight || H;
+        bodies.forEach(function(b){
+          if (b.position.y > H2 + 320 || b.position.x < -240 || b.position.x > W2 + 240){
+            M.Body.setPosition(b, { x: W2 / 2, y: -60 });
+            M.Body.setVelocity(b, { x: 0, y: 0 });
+          }
+        });
+      }
+    });
+
+    var reset = qs('#lab-reset');
+    if (reset){
+      reset.addEventListener('mousedown', function(e){ e.stopPropagation(); });
+      reset.addEventListener('click', function(){
+        bodies.forEach(function(b, i){
+          M.Body.setPosition(b, { x: 50 + Math.random() * Math.max((stage.clientWidth || W) - 100, 100), y: -40 - i * 50 });
+          M.Body.setVelocity(b, { x: 0, y: 0 });
+          M.Body.setAngularVelocity(b, 0);
+          M.Sleeping.set(b, false);
+        });
+      });
+    }
+
+    var rT;
+    window.addEventListener('resize', function(){
+      clearTimeout(rT);
+      rT = setTimeout(function(){
+        var W2 = stage.clientWidth || W, H2 = stage.clientHeight || H;
+        M.Body.setPosition(walls[0], { x: W2 / 2, y: H2 + 100 });
+        M.Body.setPosition(walls[2], { x: W2 + 100, y: -H2 });
+      }, 250);
+    });
+  } catch(e){
+    revertLab();
+    if (window.console) console.error(e);
+  }
+}
+
+/* ------------------------------------------------------------------
    Three.js — LiDAR-style terrain point cloud
 ------------------------------------------------------------------ */
 function initTerrain(){
@@ -871,6 +1132,7 @@ function initTerrain(){
   var pos = geo.attributes.position.array;
   var count = pos.length / 3;
   var base = new Float32Array(count);
+  var rdist = new Float32Array(count); // radial distance, for the LiDAR sweep
   var minY = Infinity, maxY = -Infinity;
 
   for (var i = 0, j = 0; i < pos.length; i += 3, j++){
@@ -882,6 +1144,7 @@ function initTerrain(){
     y += Math.max(0, 44 - d * 0.36);
     pos[i + 1] = y;
     base[j] = y;
+    rdist[j] = Math.sqrt(x * x + z * z);
     if (y < minY) minY = y;
     if (y > maxY) maxY = y;
   }
@@ -899,6 +1162,7 @@ function initTerrain(){
     colors[i2] = tmp.r; colors[i2 + 1] = tmp.g; colors[i2 + 2] = tmp.b;
   }
   geo.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+  var baseCol = colors.slice(); // immutable copy; sweep blends on top each frame
 
   var mat = new THREE.PointsMaterial({ size: 0.6, vertexColors: true, transparent: true, opacity: 0.9, depthWrite: false });
   var points = new THREE.Points(geo, mat);
@@ -919,6 +1183,7 @@ function initTerrain(){
   });
 
   var clock = new THREE.Clock();
+  var sweep = !SMALL && !REDUCED;
   function frame(){
     var t = clock.getElapsedTime();
     if (!REDUCED){
@@ -926,6 +1191,25 @@ function initTerrain(){
         pos[i + 1] = base[j] + Math.sin(t * 0.5 + pos[i] * 0.04 + pos[i + 2] * 0.06) * 2.4;
       }
       geo.attributes.position.needsUpdate = true;
+    }
+    if (sweep){
+      // LiDAR scan: a ring of accent-bright points expanding from the center
+      var scanR = (t * 26) % 280;
+      var colArr = geo.attributes.color.array;
+      for (var i3 = 0, j3 = 0; i3 < colArr.length; i3 += 3, j3++){
+        var f = 1 - Math.abs(rdist[j3] - scanR) * 0.0625; // band width 16
+        if (f > 0){
+          f *= f;
+          colArr[i3]     = baseCol[i3]     + (1.0  - baseCol[i3])     * f;
+          colArr[i3 + 1] = baseCol[i3 + 1] + (0.45 - baseCol[i3 + 1]) * f;
+          colArr[i3 + 2] = baseCol[i3 + 2] + (0.18 - baseCol[i3 + 2]) * f;
+        } else {
+          colArr[i3] = baseCol[i3];
+          colArr[i3 + 1] = baseCol[i3 + 1];
+          colArr[i3 + 2] = baseCol[i3 + 2];
+        }
+      }
+      geo.attributes.color.needsUpdate = true;
     }
     points.rotation.y = Math.sin(t * 0.04) * 0.07;
     camera.position.x += (mx * 7 - camera.position.x) * 0.04;
@@ -964,8 +1248,15 @@ function initScrollFX(){
   gsap.ticker.add(function(time){ lenis.raf(time * 1000); });
   gsap.ticker.lagSmoothing(0);
 
+  // Physics skills lab (desktop): swap static rows out before reveal wiring
+  LAB = !!(window.Matter && FINE && window.matchMedia('(min-width: 1024px)').matches);
+  if (LAB) LAB = prepLab();
+  // Elements hidden for the lab swap must not get reveal effects (kept for SR)
+  function inHiddenStatic(el){ return LAB && el.closest && el.closest('#skills-static'); }
+
   // Generic reveals
   qsa('[data-reveal]').forEach(function(el){
+    if (inHiddenStatic(el)) return;
     gsap.set(el, { autoAlpha: 0, y: 34 });
     ScrollTrigger.create({
       trigger: el, start: 'top 88%', once: true,
@@ -981,7 +1272,12 @@ function initScrollFX(){
     gsap.set(words, { yPercent: 120 });
     ScrollTrigger.create({
       trigger: el, start: 'top 86%', once: true,
-      onEnter: function(){ gsap.to(words, { yPercent: 0, duration: 1.1, ease: 'power4.out', stagger: 0.04 }); }
+      onEnter: function(){
+        gsap.to(words, {
+          yPercent: 0, duration: 1.1, ease: 'power4.out', stagger: 0.04,
+          onComplete: function(){ el.classList.add('split-done'); }
+        });
+      }
     });
   });
 
@@ -998,12 +1294,37 @@ function initScrollFX(){
 
   // Section divider lines
   qsa('.line-draw').forEach(function(el){
+    if (inHiddenStatic(el)) return;
     gsap.set(el, { scaleX: 0, transformOrigin: 'left center' });
     ScrollTrigger.create({
       trigger: el, start: 'top 92%', once: true,
       onEnter: function(){ gsap.to(el, { scaleX: 1, duration: 1.2, ease: 'power3.inOut' }); }
     });
   });
+
+  // Side HUD: section label (decoded) + scroll percentage
+  var hudSec = qs('#hud-sec'), hudFill = qs('#hud-fill'), hudPct = qs('#hud-pct');
+  if (hudSec){
+    var hudCur = '', hudShown = -1;
+    [['#hero', '00 — INTRO'], ['#about', '01 — ABOUT'], ['#experience', '02 — EXPERIENCE'],
+     ['#projects', '03 — WORK'], ['#education', '04 — EDUCATION'], ['#skills', '05 — STACK'],
+     ['#contact', '06 — CONTACT']].forEach(function(p){
+      ScrollTrigger.create({
+        trigger: p[0], start: 'top 50%', end: 'bottom 50%',
+        onToggle: function(s){
+          if (s.isActive && hudCur !== p[1]){ hudCur = p[1]; scramble(hudSec, p[1], 420); }
+        }
+      });
+    });
+    gsap.ticker.add(function(){
+      var pct = Math.round(scrollP * 100);
+      if (pct !== hudShown){
+        hudShown = pct;
+        hudPct.textContent = ('00' + pct).slice(-3);
+        hudFill.style.transform = 'scaleY(' + scrollP + ')';
+      }
+    });
+  }
 
   // Hero parallax out
   gsap.to('.hero-inner', {
@@ -1029,12 +1350,14 @@ function initScrollFX(){
     mqTween.timeScale(1 + mqBoost);
   });
 
-  // Projects — pinned horizontal scroll on desktop
+  // Projects — pinned horizontal scroll on desktop, with live counter
   var mm = gsap.matchMedia();
   mm.add('(min-width: 1024px)', function(){
     var track = qs('#proj-track');
     var section = qs('#projects');
     var bar = qs('#proj-progress-i');
+    var cur = qs('#proj-cur');
+    var nPanels = qsa('#proj-track > *').length || 1;
     var dist = function(){ return Math.max(0, track.scrollWidth - document.documentElement.clientWidth); };
     var tween = gsap.to(track, {
       x: function(){ return -dist(); },
@@ -1047,7 +1370,14 @@ function initScrollFX(){
         pin: true,
         anticipatePin: 1,
         invalidateOnRefresh: true,
-        onUpdate: function(self){ if (bar) gsap.set(bar, { scaleX: self.progress }); }
+        onUpdate: function(self){
+          if (bar) gsap.set(bar, { scaleX: self.progress });
+          if (cur){
+            var idx = Math.min(nPanels, 1 + Math.floor(self.progress * nPanels * 0.9999));
+            var s = ('0' + idx).slice(-2);
+            if (cur.textContent !== s) cur.textContent = s;
+          }
+        }
       }
     });
     // Cover art parallax inside the horizontal container
@@ -1064,6 +1394,15 @@ function initScrollFX(){
       });
     });
   });
+
+  // Spawn the physics pills when the section approaches; sleep it off-screen
+  if (LAB){
+    ScrollTrigger.create({ trigger: '#skills', start: 'top 75%', once: true, onEnter: initLabPhysics });
+    ScrollTrigger.create({
+      trigger: '#skills', start: 'top bottom', end: 'bottom top',
+      onToggle: function(s){ if (labState) labState.inView = s.isActive; }
+    });
+  }
 
   if (document.fonts && document.fonts.ready){
     document.fonts.ready.then(function(){ ScrollTrigger.refresh(); });
@@ -1088,7 +1427,12 @@ function initIntro(){
 
   var counter = { n: 0 };
   var tl = gsap.timeline({
-    onComplete: function(){ killPreloader(); if (lenis) lenis.start(); }
+    onComplete: function(){
+      killPreloader();
+      if (lenis) lenis.start();
+      var ht = qs('.hero-title');
+      if (ht) ht.classList.add('revealed');
+    }
   });
   tl.to(counter, {
       n: 100, duration: 1.4, ease: 'power2.inOut',
@@ -1098,7 +1442,12 @@ function initIntro(){
     .to(pre, { yPercent: -100, duration: 0.85, ease: 'power4.inOut' }, '+=0.12')
     .to(heroChars, { yPercent: 0, duration: 1.25, ease: 'power4.out', stagger: 0.035 }, '-=0.42')
     .to('#webgl', { opacity: 1, duration: 2, ease: 'power2.out' }, '-=1.2')
-    .to('.hero-eyebrow', { autoAlpha: 1, y: 0, duration: 0.9, ease: 'power3.out' }, '-=1.05')
+    .to('.hero-eyebrow', {
+      autoAlpha: 1, y: 0, duration: 0.9, ease: 'power3.out',
+      onStart: function(){
+        qsa('.hero-eyebrow .scr').forEach(function(s){ scramble(s, s.textContent, 750); });
+      }
+    }, '-=1.05')
     .to('.hero-foot > *', { autoAlpha: 1, y: 0, duration: 0.9, stagger: 0.08, ease: 'power3.out' }, '-=0.9')
     .to('#nav', { autoAlpha: 1, y: 0, duration: 0.8, ease: 'power3.out' }, '-=0.85');
 
@@ -1119,10 +1468,18 @@ function init(){
   initMenu();
   initAnchors();
   initCursor();
+  initCopyMail();
+
+  try {
+    console.log('%cMOSHE SARIG', 'font-family:monospace;font-size:22px;font-weight:bold;color:#ff4d12',
+      '\n→ full-stack developer, jerusalem\n→ moshikosarig1@gmail.com\n→ you read consoles. we should talk.');
+  } catch(e){}
 
   if (!window.gsap || REDUCED){
     // Reduced-motion / no-GSAP path: everything stays visible, no effects
     killPreloader();
+    var hud = qs('#hud');
+    if (hud) hud.style.display = 'none';
     var nav = qs('#nav');
     window.addEventListener('scroll', function(){
       nav.classList.toggle('scrolled', window.scrollY > 60);
@@ -1135,6 +1492,7 @@ function init(){
 
   initScrollFX();
   initMagnetic();
+  initCharHover();
   initTerrain();
   initIntro();
 }
