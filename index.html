@@ -26,6 +26,7 @@
   --panel-2:#161614;
   --ink:#ece9e2;
   --muted:#8b877c;
+  --read:#d7d4cb;
   --line:rgba(236,233,226,.16);
   --line-soft:rgba(236,233,226,.08);
   --accent:#ff4d12;
@@ -165,7 +166,7 @@ body.cursor-labeled #cur-label{display:block}
 .hero-line--outline{color:transparent;-webkit-text-stroke:2px var(--ink)}
 .hero-dot{color:var(--accent);-webkit-text-stroke:0}
 .hero-foot{display:flex;align-items:flex-end;justify-content:space-between;gap:40px;border-top:1px solid var(--line-soft);padding-top:clamp(20px,3vh,32px)}
-.hero-state{max-width:560px;font-size:clamp(15px,1.9vw,19px);line-height:1.55;color:var(--muted)}
+.hero-state{max-width:560px;font-size:clamp(15px,1.9vw,19px);line-height:1.55;color:var(--read)}
 .hero-state strong{color:var(--ink);font-weight:600}
 .hero-cue{flex-shrink:0;width:72px;height:72px;border:1px solid var(--line);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--font-m);font-size:18px;color:var(--ink);transition:background-color .35s,color .35s,border-color .35s}
 .hero-cue:hover{background:var(--accent);border-color:var(--accent);color:#0a0a09}
@@ -203,7 +204,7 @@ body.cursor-labeled #cur-label{display:block}
    ========================================================================== */
 .about-statement{font-family:var(--font-d);font-weight:600;font-size:clamp(24px,3.6vw,46px);line-height:1.25;letter-spacing:-.01em;max-width:1080px;margin-bottom:clamp(56px,9vh,110px)}
 .about-grid{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(40px,6vw,100px);align-items:start;margin-bottom:clamp(56px,9vh,110px)}
-.about-bio p{color:var(--muted);font-size:clamp(16px,1.8vw,18px);line-height:1.7;margin-bottom:22px}
+.about-bio p{color:var(--read);font-size:clamp(16px,1.8vw,18px);line-height:1.7;margin-bottom:22px}
 .about-bio strong{color:var(--ink);font-weight:500}
 .about-facts{display:flex;flex-direction:column}
 .fact{display:flex;align-items:baseline;gap:18px;padding:18px 0;border-top:1px solid var(--line-soft)}
@@ -216,7 +217,7 @@ body.cursor-labeled #cur-label{display:block}
 .value:hover{border-color:var(--accent);transform:translateY(-6px)}
 .value i{display:block;font-family:var(--font-m);font-style:normal;font-size:11px;color:var(--accent);letter-spacing:.2em;margin-bottom:18px}
 .value h3{font-family:var(--font-d);font-size:20px;font-weight:700;text-transform:uppercase;letter-spacing:.02em;margin-bottom:10px}
-.value p{color:var(--muted);font-size:14.5px;line-height:1.6}
+.value p{color:var(--read);font-size:14.5px;line-height:1.6}
 
 /* ==========================================================================
    10. EXPERIENCE
@@ -227,7 +228,7 @@ body.cursor-labeled #cur-label{display:block}
 .xp-role{font-family:var(--font-d);font-weight:700;font-size:clamp(22px,2.6vw,32px);line-height:1.15;letter-spacing:-.01em;margin-bottom:10px}
 .xp-org{display:inline-flex;align-items:center;gap:8px;font-family:var(--font-m);font-size:13px;letter-spacing:.06em;color:var(--accent);margin-bottom:26px}
 .xp-org:hover{text-decoration:underline;text-underline-offset:4px}
-.xp-list li{position:relative;padding-left:26px;color:var(--muted);font-size:clamp(15px,1.7vw,16.5px);line-height:1.65;margin-bottom:13px}
+.xp-list li{position:relative;padding-left:26px;color:var(--read);font-size:clamp(15px,1.7vw,16.5px);line-height:1.65;margin-bottom:13px}
 .xp-list li::before{content:'→';position:absolute;left:0;color:var(--accent);font-family:var(--font-m)}
 .xp-list strong{color:var(--ink);font-weight:500}
 .xp-row .tags{margin-top:26px}
@@ -251,7 +252,7 @@ body.cursor-labeled #cur-label{display:block}
 .proj-info{padding:clamp(20px,2.6vw,34px)}
 .proj-chip{display:inline-block;font-family:var(--font-m);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);background:var(--accent-soft);border-radius:100px;padding:6px 14px;margin-bottom:16px}
 .proj-name{font-family:var(--font-d);font-weight:700;font-size:clamp(22px,2.4vw,30px);letter-spacing:-.01em;line-height:1.1;margin-bottom:12px}
-.proj-desc{color:var(--muted);font-size:14.5px;line-height:1.6;margin-bottom:20px}
+.proj-desc{color:var(--read);font-size:14.5px;line-height:1.6;margin-bottom:20px}
 .proj-end{width:clamp(320px,30vw,420px);height:min(64vh,620px);flex-shrink:0;border:1px dashed var(--line);border-radius:22px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;color:var(--muted);transition:border-color .4s,color .4s}
 .proj-end:hover{border-color:var(--accent);color:var(--ink)}
 .proj-end b{font-family:var(--font-d);font-weight:800;font-size:clamp(40px,4vw,64px);color:var(--accent)}
@@ -268,7 +269,7 @@ body.cursor-labeled #cur-label{display:block}
 .edu-year{font-family:var(--font-m);font-size:11px;letter-spacing:.18em;color:var(--accent);margin-bottom:20px}
 .edu-degree{font-family:var(--font-d);font-weight:700;font-size:clamp(19px,2vw,23px);line-height:1.15;margin-bottom:8px}
 .edu-school{font-family:var(--font-m);font-size:12px;letter-spacing:.04em;color:var(--muted);margin-bottom:18px}
-.edu-detail{color:var(--muted);font-size:14px;line-height:1.65;border-top:1px solid var(--line-soft);padding-top:16px}
+.edu-detail{color:var(--read);font-size:14px;line-height:1.65;border-top:1px solid var(--line-soft);padding-top:16px}
 
 /* ==========================================================================
    13. SKILLS
@@ -277,7 +278,7 @@ body.cursor-labeled #cur-label{display:block}
 .skill-cat{font-family:var(--font-m);font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink)}
 .skill-cat i{font-style:normal;color:var(--accent);margin-right:10px}
 .skill-tags{display:flex;flex-wrap:wrap;gap:10px}
-.skill-tags span{font-family:var(--font-b);font-size:14px;font-weight:500;border:1px solid var(--line-soft);border-radius:100px;padding:10px 20px;color:var(--muted);transition:color .3s,border-color .3s,background-color .3s,transform .3s var(--ease)}
+.skill-tags span{font-family:var(--font-b);font-size:14px;font-weight:500;border:1px solid var(--line-soft);border-radius:100px;padding:10px 20px;color:var(--read);transition:color .3s,border-color .3s,background-color .3s,transform .3s var(--ease)}
 .skill-tags span:hover{color:#0a0a09;background:var(--ink);border-color:var(--ink);transform:translateY(-2px)}
 
 /* Physics playground (desktop enhancement; static rows remain for SR/mobile) */
@@ -306,7 +307,7 @@ body.cursor-labeled #cur-label{display:block}
 .contact::before{content:'';position:absolute;left:50%;top:42%;width:min(760px,90vw);height:min(760px,90vw);transform:translate(-50%,-50%);background:radial-gradient(circle,rgba(255,77,18,.13),transparent 62%);pointer-events:none;z-index:-1}
 .contact .sec-label{justify-content:center}
 .contact-title{font-family:var(--font-d);font-weight:800;font-size:clamp(46px,9.5vw,150px);line-height:.95;letter-spacing:-.02em;text-transform:uppercase;margin-bottom:clamp(28px,4vh,44px)}
-.contact-lede{max-width:620px;margin:0 auto clamp(40px,6vh,60px);color:var(--muted);font-size:clamp(15px,1.8vw,18px);line-height:1.7}
+.contact-lede{max-width:620px;margin:0 auto clamp(40px,6vh,60px);color:var(--read);font-size:clamp(15px,1.8vw,18px);line-height:1.7}
 .contact-mail{display:inline-flex;align-items:center;gap:16px;background:var(--accent);color:#0a0a09;font-family:var(--font-d);font-weight:700;font-size:clamp(17px,2.6vw,30px);letter-spacing:-.01em;padding:clamp(18px,2.4vw,28px) clamp(28px,4vw,56px);border-radius:100px;transition:background-color .35s,transform .35s var(--ease)}
 .contact-mail:hover{background:#ff6a35}
 .contact-mail span{font-family:var(--font-m);transition:transform .35s var(--ease)}
@@ -486,6 +487,8 @@ body.cursor-labeled #cur-label{display:block}
           <li>Processing raw <strong>LiDAR flight data</strong> from aerial surveys over the Dead Sea into 3D terrain models and research graphs.</li>
           <li>Implemented strict JWT authentication, RBAC, and full audit trails for compliance.</li>
           <li>Managing the internal <strong>GitLab</strong> instance and setting up <strong>CI/CD pipelines</strong>.</li>
+          <li>Built <strong>GSI Excellence</strong> — transformed a dense corporate procedures document into an intuitive, single-page accessibility portal with a pixel-perfect, minimalist UI for organization employees.</li>
+          <li>Spearheading <strong>AI adoption and tech innovation</strong> across the office; designing and conducting hands-on training sessions on modern AI tools for organization employees to optimize workflows and secure prompt workflows.</li>
         </ul>
         <div class="tags"><span>React</span><span>Node.js</span><span>TypeScript</span><span>Docker</span><span>Python</span><span>LiDAR</span><span>SQLite</span><span>Prisma</span><span>GitLab CI</span></div>
       </div>
@@ -534,7 +537,7 @@ body.cursor-labeled #cur-label{display:block}
           <p class="sec-label" data-reveal><span class="sec-num">03</span>Projects</p>
           <h2 class="sec-title" data-split>Selected <em>work</em></h2>
         </div>
-        <span class="proj-counter" data-reveal><b id="proj-cur">01</b> / 04 — SCROLL</span>
+        <span class="proj-counter" data-reveal><b id="proj-cur">01</b> / 05 — SCROLL</span>
       </div>
       <div class="proj-track" id="proj-track">
 
@@ -557,7 +560,7 @@ body.cursor-labeled #cur-label{display:block}
           <div class="proj-info">
             <span class="proj-chip">✦ Featured — Production System</span>
             <h3 class="proj-name">Silica — IT Inventory Management</h3>
-            <p class="proj-desc">A comprehensive full-stack inventory platform for IT departments in high-security, air-gapped government environments. Smart catalog-sequencing, JWT + RBAC security, server-side data extraction, and bulk TypeScript data pipelines — containerized entirely by hand.</p>
+            <p class="proj-desc">A comprehensive full-stack inventory platform for IT departments in high-security, air-gapped government environments. Engineered complex asset-lifecycle business logic, managing granular state transformations and status flows (such as tracking items from 'Approved for Trash' to 'Disabled'). Features smart catalog-sequencing, strict JWT + RBAC security, server-side data extraction, and bulk TypeScript data pipelines — containerized entirely by hand.</p>
             <div class="tags"><span>React</span><span>Node.js</span><span>Prisma</span><span>Docker</span><span>JWT</span><span>RBAC</span></div>
           </div>
         </article>
@@ -591,6 +594,31 @@ body.cursor-labeled #cur-label{display:block}
             <h3 class="proj-name">Systems Programming Lab</h3>
             <p class="proj-desc">Low-level system utilities in Linux emphasizing memory footprint optimization, robust process synchronization, and manual file operations in C.</p>
             <div class="tags"><span>C</span><span>Linux</span><span>WSL</span></div>
+          </div>
+        </article>
+
+        <article class="proj-card">
+          <div class="proj-cover">
+            <svg class="cover-art" viewBox="0 0 600 400" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+              <defs><pattern id="pdoc" width="44" height="44" patternUnits="userSpaceOnUse"><path d="M44 0H0V44" fill="none" stroke="currentColor" stroke-opacity=".22"/></pattern></defs>
+              <rect width="600" height="400" fill="url(#pdoc)"/>
+              <rect x="150" y="70" width="180" height="14" rx="7" fill="var(--accent)" opacity=".9"/>
+              <rect x="150" y="110" width="300" height="8" rx="4" fill="currentColor" opacity=".35"/>
+              <rect x="150" y="134" width="260" height="8" rx="4" fill="currentColor" opacity=".25"/>
+              <rect x="150" y="158" width="290" height="8" rx="4" fill="currentColor" opacity=".25"/>
+              <rect x="150" y="206" width="120" height="8" rx="4" fill="var(--accent)" opacity=".55"/>
+              <rect x="150" y="230" width="300" height="8" rx="4" fill="currentColor" opacity=".18"/>
+              <rect x="150" y="254" width="240" height="8" rx="4" fill="currentColor" opacity=".18"/>
+              <path d="M150 310H450" stroke="var(--accent)" stroke-opacity=".6" stroke-dasharray="6 8"/>
+              <circle cx="450" cy="78" r="5" fill="var(--accent)"/>
+            </svg>
+            <span class="proj-num">04</span>
+          </div>
+          <div class="proj-info">
+            <span class="proj-chip">Geospatial &amp; Corporate · UI/UX</span>
+            <h3 class="proj-name"><a data-cursor-label="OPEN" href="https://gsiexcellence.page/" target="_blank" rel="noopener">GSI Excellence — Civil Service Accessibility Portal ↗</a></h3>
+            <p class="proj-desc">Transformed a dense, multi-page corporate Word document regarding complex civil service procedures into an intuitive, high-performance single-page web application. Re-architected the entire information hierarchy from scratch, delivering a pixel-perfect, ultra-clean minimalist UI that ensures exceptional readability and a seamless user experience for organization employees.</p>
+            <div class="tags"><span>React</span><span>TypeScript</span><span>UI/UX Design</span><span>Information Architecture</span><span>Tailwind CSS</span></div>
           </div>
         </article>
 
