@@ -3,40 +3,46 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Moshe Sarig — Full-Stack Developer</title>
-<meta name="description" content="Moshe Sarig — Full-Stack Developer in Jerusalem. Building secure, production-grade systems: air-gapped government platforms, LiDAR geospatial pipelines, and more.">
-<meta property="og:title" content="Moshe Sarig — Full-Stack Developer">
-<meta property="og:description" content="Building secure, production-grade systems — from air-gapped government platforms to LiDAR geospatial pipelines.">
+<title>Moshe Sarig — Software Developer | Applied AI &amp; Security</title>
+<meta name="description" content="Moshe Sarig — Computer Science student and software developer. Production web applications, secure development, SQL, C programming and AI-assisted engineering.">
+<meta property="og:title" content="Moshe Sarig — Software Developer | Applied AI &amp; Security">
+<meta property="og:description" content="Student software developer with hands-on production experience, secure development practices and AI-assisted workflows.">
 <meta property="og:type" content="website">
-<meta name="theme-color" content="#0a0a09">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230a0a09'/%3E%3Ccircle cx='32' cy='32' r='13' fill='%23ff4d12'/%3E%3C/svg%3E">
+<meta name="theme-color" content="#0f1520">
+<meta name="color-scheme" content="dark">
+<meta name="twitter:card" content="summary">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230f1520'/%3E%3Ccircle cx='32' cy='32' r='13' fill='%238ab4f8'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Space+Grotesk:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"Person","name":"Moshe Sarig","jobTitle":"Full-Stack Developer","address":{"@type":"PostalAddress","addressLocality":"Jerusalem","addressCountry":"IL"},"email":"mailto:moshikosarig1@gmail.com","sameAs":["https://www.linkedin.com/in/moshe-sarig-675847349/","https://github.com/Moshiko-Sarig"]}
+{"@context":"https://schema.org","@type":"Person","name":"Moshe Sarig","jobTitle":"Student Software Developer","address":{"@type":"PostalAddress","addressLocality":"Jerusalem","addressCountry":"IL"},"email":"mailto:moshikosarig1@gmail.com","sameAs":["https://www.linkedin.com/in/moshe-sarig-675847349/","https://github.com/Moshiko-Sarig"]}
 </script>
 <style>
 /* ==========================================================================
    01. TOKENS
    ========================================================================== */
 :root{
-  --bg:#0a0a09;
-  --panel:#11110f;
-  --panel-2:#161614;
-  --ink:#ece9e2;
-  --muted:#8b877c;
-  --read:#d7d4cb;
-  --line:rgba(236,233,226,.16);
-  --line-soft:rgba(236,233,226,.08);
-  --accent:#ff4d12;
-  --accent-soft:rgba(255,77,18,.14);
+  --bg:#0f1520;
+  --panel:#151c2b;
+  --panel-2:#1a2333;
+  --ink:#e9edf4;
+  --muted:#8e99ad;
+  --read:#c6cfdd;
+  --line:rgba(233,237,244,.16);
+  --line-soft:rgba(233,237,244,.08);
+  --accent:#8ab4f8;
+  --accent-soft:rgba(138,180,248,.14);
   --font-d:'Syne',sans-serif;
   --font-b:'Space Grotesk',sans-serif;
   --font-m:'JetBrains Mono',monospace;
   --font-s:'Instrument Serif',serif;
   --pad:clamp(20px,4.5vw,64px);
   --nav-h:76px;
+  --section-y:clamp(120px,16vh,210px);
+  --section-head-gap:clamp(56px,7vh,88px);
+  --cluster-gap:clamp(28px,3vw,44px);
+  --measure:68ch;
   --ease:cubic-bezier(.16,1,.3,1);
 }
 
@@ -46,10 +52,8 @@
 *{margin:0;padding:0;box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
 html,body{overflow-x:clip}
-html.lenis,html.lenis body{height:auto}
-.lenis.lenis-smooth{scroll-behavior:auto!important}
 @media (prefers-reduced-motion:no-preference){
-  html:not(.lenis){scroll-behavior:smooth}
+  html{scroll-behavior:smooth}
 }
 body{
   background:var(--bg);
@@ -60,71 +64,30 @@ body{
   -webkit-font-smoothing:antialiased;
   text-rendering:optimizeLegibility;
 }
-::selection{background:var(--accent);color:#0a0a09}
+::selection{background:var(--accent);color:#0f1520}
 ::-webkit-scrollbar{width:10px}
 ::-webkit-scrollbar-track{background:var(--bg)}
-::-webkit-scrollbar-thumb{background:#2c2b27;border-radius:8px;border:2px solid var(--bg)}
+::-webkit-scrollbar-thumb{background:#2a3446;border-radius:8px;border:2px solid var(--bg)}
 a{color:inherit;text-decoration:none}
 button{font:inherit;color:inherit;background:none;border:none}
+a,button{touch-action:manipulation}
 ul{list-style:none}
 :focus-visible{outline:2px solid var(--accent);outline-offset:4px;border-radius:2px}
-@media (hover:hover) and (pointer:fine){
-  body,a,button,[data-hover]{cursor:none}
-}
 
-/* Background canvas + grain + vignette */
+/* Skip link (keyboard users) */
+.skip-link{position:fixed;top:14px;left:14px;z-index:4500;background:var(--accent);color:#0f1520;font-family:var(--font-m);font-size:12px;letter-spacing:.12em;text-transform:uppercase;padding:12px 22px;border-radius:100px;transform:translateY(-250%);transition:transform .3s var(--ease)}
+.skip-link:focus-visible{transform:translateY(0)}
+
+/* Decorative 3D background + restrained vignette */
 #webgl{position:fixed;inset:0;width:100%;height:100%;z-index:-2;pointer-events:none;opacity:0}
-.grain{position:fixed;inset:-50%;width:200%;height:200%;z-index:4000;pointer-events:none;opacity:.05;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-}
 .vignette{position:fixed;inset:0;z-index:-1;pointer-events:none;
-  background:radial-gradient(ellipse at 50% 40%,transparent 55%,rgba(10,10,9,.75) 100%)}
-
-/* Split-text masks (built by JS) */
-.msk{display:inline-block;overflow:hidden;vertical-align:top;padding-bottom:.12em;margin-bottom:-.12em}
-.msk-i{display:inline-block;will-change:transform}
-.hero-title.revealed .msk,[data-split].split-done .msk{overflow:visible}
-
-/* Side HUD: section index + scroll progress */
-.hud{position:fixed;right:26px;top:50%;transform:translateY(-50%);z-index:800;display:flex;flex-direction:column;align-items:center;gap:14px;pointer-events:none}
-.hud-sec{writing-mode:vertical-rl;font-family:var(--font-m);font-size:10px;letter-spacing:.26em;color:var(--muted);text-transform:uppercase;white-space:nowrap}
-.hud-track{width:1px;height:110px;background:var(--line-soft);position:relative;overflow:hidden}
-.hud-track i{position:absolute;inset:0;background:var(--accent);transform:scaleY(0);transform-origin:top center}
-.hud-pct{font-family:var(--font-m);font-size:10px;letter-spacing:.1em;color:var(--muted);font-variant-numeric:tabular-nums}
-@media (max-width:1279px){.hud{display:none}}
-
-/* ==========================================================================
-   03. PRELOADER
-   ========================================================================== */
-#preloader{position:fixed;inset:0;z-index:3000;background:var(--bg);display:flex;align-items:center;justify-content:center;flex-direction:column}
-.pre-name{position:absolute;top:28px;left:var(--pad);font-family:var(--font-m);font-size:11px;letter-spacing:.22em;color:var(--muted)}
-.pre-count{font-family:var(--font-d);font-weight:800;font-size:clamp(90px,20vw,220px);line-height:1;letter-spacing:-.03em;color:var(--ink);font-variant-numeric:tabular-nums}
-.pre-count sup{font-size:.22em;color:var(--accent);font-weight:700;vertical-align:super}
-.pre-bar{position:absolute;bottom:0;left:0;width:100%;height:3px;background:var(--line-soft)}
-.pre-bar-i{height:100%;width:100%;background:var(--accent);transform:scaleX(0);transform-origin:left center}
-
-/* ==========================================================================
-   04. CURSOR
-   ========================================================================== */
-#cur-dot,#cur-ring{position:fixed;top:0;left:0;z-index:9999;pointer-events:none;display:none}
-@media (hover:hover) and (pointer:fine){
-  #cur-dot,#cur-ring{display:block}
-}
-#cur-dot i,#cur-ring i{display:block;border-radius:50%;transform:translate(-50%,-50%);transition:transform .35s var(--ease),width .35s var(--ease),height .35s var(--ease),background-color .35s,border-color .35s,opacity .35s}
-#cur-dot i{width:7px;height:7px;background:var(--accent)}
-#cur-ring i{width:38px;height:38px;border:1px solid rgba(236,233,226,.4);display:flex;align-items:center;justify-content:center}
-#cur-label{display:none;font-family:var(--font-m);font-style:normal;font-weight:500;font-size:10px;letter-spacing:.16em;color:#0a0a09;white-space:nowrap}
-body.is-hovering #cur-dot i{transform:translate(-50%,-50%) scale(.4)}
-body.is-hovering #cur-ring i{transform:translate(-50%,-50%) scale(1.9);background:rgba(236,233,226,.92);border-color:transparent;mix-blend-mode:difference}
-body.cursor-labeled #cur-dot i{opacity:0}
-body.cursor-labeled #cur-ring i{transform:translate(-50%,-50%) scale(1);width:88px;height:88px;background:var(--accent);border-color:transparent;mix-blend-mode:normal}
-body.cursor-labeled #cur-label{display:block}
+  background:radial-gradient(ellipse at 50% 38%,transparent 58%,rgba(15,21,32,.64) 100%)}
 
 /* ==========================================================================
    05. NAV + MENU
    ========================================================================== */
 .nav{position:fixed;top:0;left:0;right:0;z-index:900;height:var(--nav-h);display:flex;align-items:center;justify-content:space-between;gap:24px;padding:0 var(--pad);transition:background-color .4s,border-color .4s,backdrop-filter .4s}
-.nav.scrolled{background:rgba(10,10,9,.72);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line-soft)}
+.nav.scrolled{background:rgba(15,21,32,.72);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line-soft)}
 .nav-logo{font-family:var(--font-d);font-weight:800;font-size:19px;letter-spacing:.02em;display:flex;align-items:flex-start;gap:3px}
 .nav-logo sup{font-family:var(--font-m);font-size:9px;color:var(--accent);letter-spacing:.1em;margin-top:2px}
 .nav-links{display:flex;gap:clamp(18px,2.4vw,34px)}
@@ -133,9 +96,8 @@ body.cursor-labeled #cur-label{display:block}
 .nav-links a:hover{color:var(--ink)}
 .nav-links a:hover::after{transform:scaleX(1);transform-origin:left center}
 .nav-right{display:flex;align-items:center;gap:clamp(14px,2vw,26px)}
-.nav-time{font-family:var(--font-m);font-size:11px;letter-spacing:.14em;color:var(--muted);white-space:nowrap}
-.nav-cta{font-family:var(--font-m);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#0a0a09;background:var(--ink);padding:11px 22px;border-radius:100px;white-space:nowrap;transition:background-color .3s,color .3s;display:inline-block}
-.nav-cta:hover{background:var(--accent);color:#0a0a09}
+.nav-cta{font-family:var(--font-m);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#0f1520;background:var(--ink);padding:11px 22px;border-radius:100px;white-space:nowrap;transition:background-color .3s,color .3s;display:inline-block}
+.nav-cta:hover{background:var(--accent);color:#0f1520}
 .nav-burger{display:none;width:44px;height:44px;position:relative;z-index:960}
 .nav-burger span{position:absolute;left:10px;width:24px;height:2px;background:var(--ink);transition:transform .4s var(--ease),top .4s var(--ease)}
 .nav-burger span:nth-child(1){top:18px}
@@ -143,7 +105,7 @@ body.cursor-labeled #cur-label{display:block}
 .nav-burger.open span:nth-child(1){top:22px;transform:rotate(45deg)}
 .nav-burger.open span:nth-child(2){top:22px;transform:rotate(-45deg)}
 
-.menu{position:fixed;inset:0;z-index:950;background:#0d0d0b;display:none;flex-direction:column;justify-content:center;padding:0 var(--pad);clip-path:inset(0 0 100% 0)}
+.menu{position:fixed;inset:0;z-index:950;background:#121926;display:none;flex-direction:column;justify-content:center;padding:0 var(--pad);clip-path:inset(0 0 100% 0)}
 .menu-links{display:flex;flex-direction:column;gap:6px}
 .m-mask{overflow:hidden;padding-bottom:.1em;margin-bottom:-.1em}
 .m-link{display:inline-flex;align-items:baseline;gap:16px;font-family:var(--font-d);font-weight:800;font-size:clamp(38px,9vw,64px);line-height:1.05;text-transform:uppercase;letter-spacing:-.02em;color:var(--ink)}
@@ -161,7 +123,8 @@ body.cursor-labeled #cur-label{display:block}
 .hero-eyebrow .dot{width:8px;height:8px;border-radius:50%;background:var(--accent);box-shadow:0 0 14px var(--accent);animation:pulse 2.2s infinite}
 .hero-eyebrow .sep{color:var(--line)}
 @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.7)}}
-.hero-title{font-family:var(--font-d);font-weight:800;font-size:clamp(76px,17.5vw,250px);line-height:.86;letter-spacing:-.02em;text-transform:uppercase;margin-bottom:clamp(28px,5vh,56px)}
+/* 13.5vw sized so "MOSHE" (≈6.3em in Syne 800) never wraps mid-word */
+.hero-title{font-family:var(--font-d);font-weight:800;font-size:clamp(64px,13.5vw,230px);line-height:.86;letter-spacing:-.02em;text-transform:uppercase;margin-bottom:clamp(28px,5vh,56px)}
 .hero-line{display:block}
 .hero-line--outline{color:transparent;-webkit-text-stroke:2px var(--ink)}
 .hero-dot{color:var(--accent);-webkit-text-stroke:0}
@@ -169,7 +132,7 @@ body.cursor-labeled #cur-label{display:block}
 .hero-state{max-width:560px;font-size:clamp(15px,1.9vw,19px);line-height:1.55;color:var(--read)}
 .hero-state strong{color:var(--ink);font-weight:600}
 .hero-cue{flex-shrink:0;width:72px;height:72px;border:1px solid var(--line);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--font-m);font-size:18px;color:var(--ink);transition:background-color .35s,color .35s,border-color .35s}
-.hero-cue:hover{background:var(--accent);border-color:var(--accent);color:#0a0a09}
+.hero-cue:hover{background:var(--accent);border-color:var(--accent);color:#0f1520}
 .hero-cue span{animation:cue 2s infinite var(--ease)}
 @keyframes cue{0%,100%{transform:translateY(-3px)}50%{transform:translateY(4px)}}
 @media (prefers-reduced-motion:reduce){
@@ -177,96 +140,97 @@ body.cursor-labeled #cur-label{display:block}
 }
 
 /* ==========================================================================
-   07. MARQUEE
-   ========================================================================== */
-.marquee{border-top:1px solid var(--line-soft);border-bottom:1px solid var(--line-soft);padding:clamp(16px,2.4vh,26px) 0;overflow:hidden;position:relative;z-index:1;background:rgba(10,10,9,.5)}
-.mq-track{display:flex;width:max-content;will-change:transform}
-.mq-inner{display:flex;align-items:center;white-space:nowrap;font-family:var(--font-d);font-weight:700;font-size:clamp(26px,3.6vw,52px);text-transform:uppercase;letter-spacing:-.01em;color:var(--ink);padding-right:.6em}
-.mq-inner i{font-style:normal;color:var(--accent);font-size:.6em;margin:0 .6em}
-
-/* ==========================================================================
    08. SECTIONS — SHARED
    ========================================================================== */
-.section{padding:clamp(96px,14vh,180px) var(--pad);position:relative;z-index:1}
-.sec-head{margin-bottom:clamp(44px,7vh,84px)}
+.section{padding:var(--section-y) var(--pad);position:relative;z-index:1}
+.sec-head{margin-bottom:var(--section-head-gap)}
 .sec-label{display:flex;align-items:center;gap:14px;font-family:var(--font-m);font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);margin-bottom:22px}
-.sec-label::before{content:'';width:9px;height:9px;background:var(--accent)}
 .sec-num{color:var(--accent)}
-.sec-title{font-family:var(--font-d);font-weight:700;font-size:clamp(42px,7.2vw,108px);line-height:.95;letter-spacing:-.02em;text-transform:uppercase}
+.sec-title{font-family:var(--font-d);font-weight:700;font-size:clamp(40px,6vw,92px);line-height:.98;letter-spacing:-.02em;text-transform:uppercase;max-width:18ch}
 .sec-title em,.contact-title em{font-family:var(--font-s);font-style:italic;font-weight:400;text-transform:lowercase;letter-spacing:0;color:var(--accent);font-size:.97em}
-.tags{display:flex;flex-wrap:wrap;gap:8px}
-.tags span{font-family:var(--font-m);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);border:1px solid var(--line-soft);border-radius:100px;padding:7px 14px;transition:color .3s,border-color .3s}
-.tags span:hover{color:var(--accent);border-color:var(--accent)}
+.tags{display:flex;flex-wrap:wrap;gap:7px 0}
+.tags span{font-family:var(--font-m);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.tags span:not(:last-child)::after{content:'·';margin:0 10px;color:rgba(142,153,173,.5)}
 .line-draw{height:1px;background:var(--line);width:100%}
 
 /* ==========================================================================
    09. ABOUT
    ========================================================================== */
-.about-statement{font-family:var(--font-d);font-weight:600;font-size:clamp(24px,3.6vw,46px);line-height:1.25;letter-spacing:-.01em;max-width:1080px;margin-bottom:clamp(56px,9vh,110px)}
-.about-grid{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(40px,6vw,100px);align-items:start;margin-bottom:clamp(56px,9vh,110px)}
-.about-bio p{color:var(--read);font-size:clamp(16px,1.8vw,18px);line-height:1.7;margin-bottom:22px}
+.about-statement{font-family:var(--font-d);font-weight:600;font-size:clamp(23px,3vw,40px);line-height:1.35;letter-spacing:-.01em;max-width:32ch;margin-bottom:var(--section-head-gap)}
+.about-grid{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(48px,7vw,112px);align-items:start;margin-bottom:var(--section-head-gap)}
+.about-bio{max-width:var(--measure)}
+.about-bio p{color:var(--read);font-size:clamp(16px,1.8vw,18px);line-height:1.75}
 .about-bio strong{color:var(--ink);font-weight:500}
 .about-facts{display:flex;flex-direction:column}
-.fact{display:flex;align-items:baseline;gap:18px;padding:18px 0;border-top:1px solid var(--line-soft)}
+.fact{display:flex;align-items:baseline;gap:18px;padding:20px 0;border-top:1px solid var(--line-soft)}
 .fact:last-child{border-bottom:1px solid var(--line-soft)}
-.fact-i{font-family:var(--font-m);font-size:11px;color:var(--accent);letter-spacing:.08em;flex-shrink:0}
+.fact-i{font-family:var(--font-m);font-size:11px;color:var(--muted);letter-spacing:.08em;flex-shrink:0}
 .fact strong{display:block;font-size:15px;font-weight:600;letter-spacing:.01em}
 .fact em{display:block;font-style:normal;font-family:var(--font-m);font-size:11.5px;letter-spacing:.06em;color:var(--muted);margin-top:3px}
-.values{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(20px,2.5vw,32px)}
-.value{border:1px solid var(--line-soft);background:rgba(17,17,15,.55);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);border-radius:18px;padding:clamp(24px,3vw,36px);transition:border-color .4s,transform .4s var(--ease)}
-.value:hover{border-color:var(--accent);transform:translateY(-6px)}
-.value i{display:block;font-family:var(--font-m);font-style:normal;font-size:11px;color:var(--accent);letter-spacing:.2em;margin-bottom:18px}
-.value h3{font-family:var(--font-d);font-size:20px;font-weight:700;text-transform:uppercase;letter-spacing:.02em;margin-bottom:10px}
-.value p{color:var(--read);font-size:14.5px;line-height:1.6}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--cluster-gap);border-top:1px solid var(--line-soft);padding-top:var(--cluster-gap)}
+.stat-n{display:block;font-family:var(--font-d);font-weight:800;font-size:clamp(34px,4.5vw,64px);line-height:1;color:var(--ink);font-variant-numeric:tabular-nums;margin-bottom:10px}
+.stat span{display:block;font-family:var(--font-m);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);line-height:1.7}
 
 /* ==========================================================================
    10. EXPERIENCE
    ========================================================================== */
-.xp-row{display:grid;grid-template-columns:90px 230px minmax(0,1fr);gap:clamp(20px,3vw,48px);padding:clamp(40px,6vh,64px) 0}
+.xp-row{display:grid;grid-template-columns:80px 210px minmax(0,1fr);gap:clamp(24px,3.5vw,56px);padding:clamp(48px,7vh,72px) 0}
 .xp-idx{font-family:var(--font-d);font-weight:800;font-size:clamp(28px,3vw,40px);line-height:1;color:transparent;-webkit-text-stroke:1px var(--muted)}
 .xp-when{font-family:var(--font-m);font-size:12px;letter-spacing:.1em;color:var(--muted);text-transform:uppercase;line-height:2}
 .xp-role{font-family:var(--font-d);font-weight:700;font-size:clamp(22px,2.6vw,32px);line-height:1.15;letter-spacing:-.01em;margin-bottom:10px}
 .xp-org{display:inline-flex;align-items:center;gap:8px;font-family:var(--font-m);font-size:13px;letter-spacing:.06em;color:var(--accent);margin-bottom:26px}
 .xp-org:hover{text-decoration:underline;text-underline-offset:4px}
-.xp-list li{position:relative;padding-left:26px;color:var(--read);font-size:clamp(15px,1.7vw,16.5px);line-height:1.65;margin-bottom:13px}
-.xp-list li::before{content:'→';position:absolute;left:0;color:var(--accent);font-family:var(--font-m)}
+.xp-list{max-width:var(--measure)}
+.xp-list li{position:relative;padding-left:26px;color:var(--read);font-size:clamp(15px,1.7vw,16.5px);line-height:1.75;margin-bottom:15px}
+.xp-list li::before{content:'→';position:absolute;left:0;color:var(--muted);font-family:var(--font-m)}
 .xp-list strong{color:var(--ink);font-weight:500}
 .xp-row .tags{margin-top:26px}
 
 /* ==========================================================================
-   11. PROJECTS (horizontal scroll on desktop)
+   11. PROJECTS — readable grid by default, horizontal pin as enhancement
    ========================================================================== */
-.proj-section{padding:0}
-.proj-pin{min-height:100svh;display:flex;flex-direction:column;justify-content:center;gap:clamp(28px,4vh,44px);padding:calc(var(--nav-h) + 16px) 0 clamp(24px,4vh,40px)}
-.proj-pin .sec-head{padding:0 var(--pad);margin-bottom:0;display:flex;align-items:flex-end;justify-content:space-between;gap:24px}
-.proj-counter{font-family:var(--font-m);font-size:12px;letter-spacing:.18em;color:var(--muted);white-space:nowrap;padding-bottom:10px}
+.proj-section{padding:var(--section-y) var(--pad)}
+.proj-pin{min-height:0;display:flex;flex-direction:column;gap:var(--section-head-gap);padding:0}
+.proj-pin .sec-head{margin-bottom:0;display:flex;align-items:flex-end;justify-content:space-between;gap:24px}
+.proj-counter{display:none;font-family:var(--font-m);font-size:12px;letter-spacing:.18em;color:var(--muted);white-space:nowrap;padding-bottom:10px}
 .proj-counter b{color:var(--accent);font-weight:500}
-.proj-track{display:flex;gap:clamp(18px,2.2vw,32px);padding:0 var(--pad);width:max-content;will-change:transform}
-.proj-card{width:clamp(500px,46vw,680px);height:min(64vh,620px);flex-shrink:0;border:1px solid var(--line-soft);border-radius:22px;background:var(--panel);overflow:hidden;display:flex;flex-direction:column;transition:border-color .4s}
-.proj-card:hover{border-color:var(--line)}
-.proj-card:hover .proj-cover{transform:scale(1.025)}
+.proj-track{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--cluster-gap);width:auto}
+.proj-card{min-width:0;border:1px solid var(--line-soft);border-radius:20px;background:var(--panel);overflow:hidden;display:flex;flex-direction:column;box-shadow:0 18px 48px -32px rgba(0,0,0,.72);transition:border-color .3s,box-shadow .3s}
+.proj-card:hover{border-color:var(--line);box-shadow:0 22px 56px -34px rgba(0,0,0,.78)}
 .proj-card:hover .proj-num{-webkit-text-stroke-color:var(--accent)}
-.proj-cover{position:relative;flex:1;min-height:0;background:var(--panel-2);color:var(--muted);overflow:hidden;border-bottom:1px solid var(--line-soft);transition:transform .7s var(--ease)}
+.proj-cover{position:relative;flex:none;aspect-ratio:16/9;background:var(--panel-2);color:var(--muted);overflow:hidden;border-bottom:1px solid var(--line-soft)}
 .cover-art{position:absolute;inset:-6%;width:112%;height:112%}
 .proj-num{position:absolute;right:18px;bottom:6px;font-family:var(--font-d);font-weight:800;font-size:clamp(64px,7vw,110px);line-height:1;color:transparent;-webkit-text-stroke:1px var(--line);pointer-events:none}
 .proj-info{padding:clamp(20px,2.6vw,34px)}
-.proj-chip{display:inline-block;font-family:var(--font-m);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);background:var(--accent-soft);border-radius:100px;padding:6px 14px;margin-bottom:16px}
+.proj-chip{display:inline-block;font-family:var(--font-m);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);background:var(--line-soft);border-radius:100px;padding:6px 14px;margin-bottom:16px}
+.proj-card:first-child .proj-chip{color:var(--accent);background:var(--accent-soft)}
 .proj-name{font-family:var(--font-d);font-weight:700;font-size:clamp(22px,2.4vw,30px);letter-spacing:-.01em;line-height:1.1;margin-bottom:12px}
-.proj-desc{color:var(--read);font-size:14.5px;line-height:1.6;margin-bottom:20px}
-.proj-end{width:clamp(320px,30vw,420px);height:min(64vh,620px);flex-shrink:0;border:1px dashed var(--line);border-radius:22px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;color:var(--muted);transition:border-color .4s,color .4s}
+.proj-desc{color:var(--read);font-size:14.5px;line-height:1.7;margin-bottom:20px;max-width:var(--measure)}
+.proj-end{grid-column:1/-1;min-height:160px;border:1px dashed var(--line);border-radius:20px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;color:var(--muted);transition:border-color .3s,color .3s}
 .proj-end:hover{border-color:var(--accent);color:var(--ink)}
 .proj-end b{font-family:var(--font-d);font-weight:800;font-size:clamp(40px,4vw,64px);color:var(--accent)}
 .proj-end span{font-family:var(--font-m);font-size:12px;letter-spacing:.22em;text-transform:uppercase}
-.proj-progress{height:2px;background:var(--line-soft);margin:0 var(--pad);border-radius:2px;overflow:hidden}
+.proj-progress{display:none;height:2px;background:var(--line-soft);margin:0 var(--pad);border-radius:2px;overflow:hidden}
 .proj-progress i{display:block;height:100%;width:100%;background:var(--accent);transform:scaleX(0);transform-origin:left center}
+
+@media (min-width:1024px){
+  html.projects-enhanced .proj-section{padding:0}
+  html.projects-enhanced .proj-pin{min-height:100svh;justify-content:center;gap:clamp(28px,4vh,40px);padding:calc(var(--nav-h) + 16px) 0 clamp(28px,4vh,44px)}
+  html.projects-enhanced .proj-pin .sec-head{padding:0 var(--pad)}
+  html.projects-enhanced .proj-counter{display:block}
+  html.projects-enhanced .proj-track{display:flex;gap:clamp(22px,2.4vw,34px);padding:0 var(--pad);width:max-content;will-change:transform}
+  html.projects-enhanced .proj-card{width:clamp(500px,46vw,680px);height:min(58vh,560px);flex-shrink:0}
+  html.projects-enhanced .proj-cover{flex:1;min-height:0;aspect-ratio:auto}
+  html.projects-enhanced .proj-end{grid-column:auto;width:clamp(320px,30vw,420px);height:min(58vh,560px);min-height:0;flex-shrink:0}
+  html.projects-enhanced .proj-progress{display:block}
+}
 
 /* ==========================================================================
    12. EDUCATION
    ========================================================================== */
-.edu-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(20px,2.5vw,32px)}
-.edu-card{border:1px solid var(--line-soft);border-radius:18px;background:rgba(17,17,15,.55);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);padding:clamp(26px,3vw,40px);transition:border-color .4s,transform .4s var(--ease)}
-.edu-card:hover{border-color:var(--accent);transform:translateY(-6px)}
-.edu-year{font-family:var(--font-m);font-size:11px;letter-spacing:.18em;color:var(--accent);margin-bottom:20px}
+.edu-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--cluster-gap)}
+.edu-card{border-top:1px solid var(--line);padding:clamp(26px,3vw,36px) 0 0}
+.edu-year{font-family:var(--font-m);font-size:11px;letter-spacing:.18em;color:var(--muted);margin-bottom:20px}
 .edu-degree{font-family:var(--font-d);font-weight:700;font-size:clamp(19px,2vw,23px);line-height:1.15;margin-bottom:8px}
 .edu-school{font-family:var(--font-m);font-size:12px;letter-spacing:.04em;color:var(--muted);margin-bottom:18px}
 .edu-detail{color:var(--read);font-size:14px;line-height:1.65;border-top:1px solid var(--line-soft);padding-top:16px}
@@ -274,48 +238,28 @@ body.cursor-labeled #cur-label{display:block}
 /* ==========================================================================
    13. SKILLS
    ========================================================================== */
-.skill-row{display:grid;grid-template-columns:240px minmax(0,1fr);gap:clamp(16px,3vw,48px);align-items:center;padding:clamp(24px,3.6vh,38px) 0}
+.skill-row{display:grid;grid-template-columns:220px minmax(0,1fr);gap:clamp(20px,3vw,48px);align-items:center;padding:clamp(28px,4vh,42px) 0}
 .skill-cat{font-family:var(--font-m);font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink)}
-.skill-cat i{font-style:normal;color:var(--accent);margin-right:10px}
-.skill-tags{display:flex;flex-wrap:wrap;gap:10px}
-.skill-tags span{font-family:var(--font-b);font-size:14px;font-weight:500;border:1px solid var(--line-soft);border-radius:100px;padding:10px 20px;color:var(--read);transition:color .3s,border-color .3s,background-color .3s,transform .3s var(--ease)}
-.skill-tags span:hover{color:#0a0a09;background:var(--ink);border-color:var(--ink);transform:translateY(-2px)}
-
-/* Physics playground (desktop enhancement; static rows remain for SR/mobile) */
-.sr-static{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
-.skills-lab[hidden]{display:none}
-.lab-legend{display:flex;flex-wrap:wrap;gap:10px 26px;margin-bottom:18px;font-family:var(--font-m);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
-.lab-legend i{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:8px;vertical-align:middle}
-.lab-legend .l1 i{background:var(--accent)}
-.lab-legend .l2 i{background:var(--ink)}
-.lab-legend .l3 i{background:transparent;border:1px solid var(--accent)}
-.lab-legend .l4 i{background:transparent;border:1px solid var(--muted)}
-.lab-stage{position:relative;height:clamp(420px,58vh,560px);border:1px solid var(--line-soft);border-radius:22px;background-color:rgba(17,17,15,.5);overflow:hidden;background-image:linear-gradient(var(--line-soft) 1px,transparent 1px),linear-gradient(90deg,var(--line-soft) 1px,transparent 1px);background-size:44px 44px}
-.lab-pill{position:absolute;left:0;top:0;pointer-events:none;user-select:none;-webkit-user-select:none;white-space:nowrap;font-family:var(--font-m);font-size:12.5px;letter-spacing:.06em;padding:11px 20px;border-radius:100px;will-change:transform;opacity:0}
-.lab-pill.cat-0{background:var(--accent);color:#0a0a09}
-.lab-pill.cat-1{background:var(--ink);color:#0a0a09}
-.lab-pill.cat-2{background:rgba(10,10,9,.75);border:1px solid var(--accent);color:var(--accent)}
-.lab-pill.cat-3{background:rgba(10,10,9,.75);border:1px solid var(--line);color:var(--muted)}
-.lab-note{position:absolute;left:18px;bottom:14px;font-family:var(--font-m);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);pointer-events:none}
-.lab-reset{position:absolute;right:14px;top:14px;z-index:5;font-family:var(--font-m);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);border:1px solid var(--line-soft);border-radius:100px;padding:9px 16px;transition:color .3s,border-color .3s}
-.lab-reset:hover{color:var(--accent);border-color:var(--accent)}
+.skill-cat i{font-style:normal;color:var(--muted);margin-right:10px}
+.skill-tags{display:flex;flex-wrap:wrap;gap:8px 0}
+.skill-tags span{font-size:15px;font-weight:500;color:var(--read)}
+.skill-tags span:not(:last-child)::after{content:'·';margin:0 12px;color:rgba(142,153,173,.5)}
 
 /* ==========================================================================
    14. CONTACT
    ========================================================================== */
-.contact{text-align:center;padding-top:clamp(110px,16vh,200px)}
-.contact::before{content:'';position:absolute;left:50%;top:42%;width:min(760px,90vw);height:min(760px,90vw);transform:translate(-50%,-50%);background:radial-gradient(circle,rgba(255,77,18,.13),transparent 62%);pointer-events:none;z-index:-1}
+.contact{text-align:center}
 .contact .sec-label{justify-content:center}
-.contact-title{font-family:var(--font-d);font-weight:800;font-size:clamp(46px,9.5vw,150px);line-height:.95;letter-spacing:-.02em;text-transform:uppercase;margin-bottom:clamp(28px,4vh,44px)}
-.contact-lede{max-width:620px;margin:0 auto clamp(40px,6vh,60px);color:var(--read);font-size:clamp(15px,1.8vw,18px);line-height:1.7}
-.contact-mail{display:inline-flex;align-items:center;gap:16px;background:var(--accent);color:#0a0a09;font-family:var(--font-d);font-weight:700;font-size:clamp(17px,2.6vw,30px);letter-spacing:-.01em;padding:clamp(18px,2.4vw,28px) clamp(28px,4vw,56px);border-radius:100px;transition:background-color .35s,transform .35s var(--ease)}
-.contact-mail:hover{background:#ff6a35}
+.contact-title{font-family:var(--font-d);font-weight:800;font-size:clamp(44px,8vw,120px);line-height:.98;letter-spacing:-.02em;text-transform:uppercase;margin-bottom:clamp(32px,4.5vh,48px)}
+.contact-lede{max-width:var(--measure);margin:0 auto clamp(40px,6vh,60px);color:var(--read);font-size:clamp(15px,1.8vw,18px);line-height:1.75}
+.contact-mail{display:inline-flex;align-items:center;gap:14px;background:var(--accent);color:#0f1520;font-family:var(--font-d);font-weight:700;font-size:clamp(17px,2.3vw,27px);letter-spacing:-.01em;padding:clamp(17px,2vw,24px) clamp(28px,3.5vw,48px);border-radius:100px;box-shadow:0 20px 58px -26px rgba(138,180,248,.5);transition:background-color .3s,box-shadow .3s}
+.contact-mail:hover{background:#a5c6fa;box-shadow:0 24px 66px -28px rgba(138,180,248,.58)}
 .contact-mail span{font-family:var(--font-m);transition:transform .35s var(--ease)}
 .contact-mail:hover span{transform:translate(3px,-3px)}
-.contact-socials{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-top:clamp(32px,5vh,48px)}
-.contact-socials a,.contact-socials button{display:inline-flex;align-items:center;gap:8px;font-family:var(--font-m);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);border:1px solid var(--line-soft);border-radius:100px;padding:13px 24px;transition:color .3s,border-color .3s}
-.contact-socials a:hover,.contact-socials button:hover{color:var(--ink);border-color:var(--accent)}
-.contact-socials button.ok{color:var(--accent);border-color:var(--accent)}
+.contact-socials{display:flex;flex-wrap:wrap;justify-content:center;gap:10px 26px;margin-top:clamp(32px,5vh,48px)}
+.contact-socials a,.contact-socials button{display:inline-flex;align-items:center;gap:8px;font-family:var(--font-m);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);padding:6px 0;transition:color .3s}
+.contact-socials a:hover,.contact-socials button:hover{color:var(--ink)}
+.contact-socials button.ok{color:var(--accent)}
 
 /* ==========================================================================
    15. FOOTER
@@ -324,63 +268,46 @@ body.cursor-labeled #cur-label{display:block}
 .footer-row{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:14px 32px;font-family:var(--font-m);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
 .footer-row .to-top{color:var(--ink)}
 .footer-row .to-top:hover{color:var(--accent)}
-.footer-sub{margin-top:14px;font-family:var(--font-m);font-size:10.5px;letter-spacing:.1em;color:rgba(139,135,124,.55)}
+.footer-sub{margin-top:14px;font-family:var(--font-m);font-size:10.5px;letter-spacing:.1em;color:rgba(142,153,173,.55)}
 
 /* ==========================================================================
    16. RESPONSIVE
    ========================================================================== */
 @media (max-width:1023px){
-  .proj-section{padding:clamp(96px,14vh,180px) var(--pad)}
-  .proj-pin{min-height:0;padding:0;gap:36px}
   .proj-pin .sec-head{padding:0;flex-direction:column;align-items:flex-start;gap:14px}
-  .proj-track{width:auto;flex-direction:column;padding:0}
-  .proj-card{width:100%;height:auto}
-  .proj-cover{flex:none;aspect-ratio:16/9}
-  .proj-end{width:100%;height:auto;padding:44px 0}
-  .proj-progress{display:none}
+  .proj-track{grid-template-columns:1fr}
+  .proj-end{padding:44px 0}
 }
 @media (max-width:900px){
-  .nav-links,.nav-time{display:none}
+  :root{--section-y:clamp(96px,13vh,140px);--section-head-gap:clamp(48px,7vh,72px)}
+  .nav-links{display:none}
   .nav-burger{display:block}
   .menu{display:none}
   .about-grid{grid-template-columns:1fr}
-  .values{grid-template-columns:1fr}
   .xp-row{grid-template-columns:1fr;gap:14px}
+  .stats{grid-template-columns:1fr;gap:28px}
   .xp-idx{font-size:22px;-webkit-text-stroke:1px var(--accent)}
   .edu-grid{grid-template-columns:1fr}
   .skill-row{grid-template-columns:1fr;gap:18px;align-items:start}
 }
 @media (max-width:640px){
   .nav-cta{display:none}
-  .hero-title{font-size:clamp(64px,19.5vw,110px)}
+  .hero-title{font-size:clamp(40px,13.5vw,90px)}
   .hero-line--outline{-webkit-text-stroke:1.2px var(--ink)}
   .hero-foot{flex-direction:column;align-items:flex-start;gap:24px}
   .hero-cue{width:60px;height:60px}
+  .contact-mail{max-width:100%;font-size:clamp(15px,4.7vw,20px);padding:18px 26px;overflow-wrap:anywhere}
   .footer-row{flex-direction:column;align-items:flex-start}
 }
 </style>
-<noscript><style>#preloader,#cur-dot,#cur-ring{display:none!important}#webgl{opacity:.5}</style></noscript>
+<noscript><style>#webgl{opacity:.45}</style></noscript>
 </head>
 <body>
 
+<a class="skip-link" href="#main">Skip to content</a>
+
 <canvas id="webgl" aria-hidden="true"></canvas>
 <div class="vignette" aria-hidden="true"></div>
-<div class="grain" aria-hidden="true"></div>
-
-<div id="preloader" aria-hidden="true">
-  <span class="pre-name">MOSHE SARIG — PORTFOLIO ©2026</span>
-  <div class="pre-count"><span id="pre-num">0</span><sup>%</sup></div>
-  <div class="pre-bar"><div class="pre-bar-i" id="pre-bar"></div></div>
-</div>
-
-<div id="cur-dot" aria-hidden="true"><i></i></div>
-<div id="cur-ring" aria-hidden="true"><i><b id="cur-label"></b></i></div>
-
-<aside class="hud" id="hud" aria-hidden="true">
-  <span class="hud-sec" id="hud-sec">00 — INTRO</span>
-  <span class="hud-track"><i id="hud-fill"></i></span>
-  <span class="hud-pct" id="hud-pct">000</span>
-</aside>
 
 <header class="nav" id="nav">
   <a href="#hero" class="nav-logo" aria-label="Moshe Sarig — home">M—S<sup>©26</sup></a>
@@ -393,8 +320,7 @@ body.cursor-labeled #cur-label{display:block}
     <a href="#contact">Contact</a>
   </nav>
   <div class="nav-right">
-    <span class="nav-time" aria-hidden="true"><span class="jlm-time">--:--:--</span> JLM</span>
-    <a href="#contact" class="nav-cta magnetic">Let's talk</a>
+    <a href="#contact" class="nav-cta">Let's talk</a>
     <button class="nav-burger" id="menu-btn" aria-label="Open menu" aria-expanded="false" aria-controls="menu">
       <span></span><span></span>
     </button>
@@ -417,54 +343,42 @@ body.cursor-labeled #cur-label{display:block}
   </div>
 </div>
 
-<main>
+<main id="main" tabindex="-1">
   <!-- HERO -->
   <section class="hero" id="hero">
     <div class="hero-inner">
-      <p class="hero-eyebrow"><span class="dot"></span><span class="scr">Open to student &amp; part-time roles</span><span class="sep">—</span><span class="scr">Jerusalem, IL</span></p>
+      <p class="hero-eyebrow"><span class="dot"></span><span>Open to student &amp; junior roles</span><span class="sep">—</span><span>Jerusalem, IL</span></p>
       <h1 class="hero-title">
         <span class="hero-line">Moshe</span>
         <span class="hero-line hero-line--outline">Sarig<span class="hero-dot">.</span></span>
       </h1>
       <div class="hero-foot">
-        <p class="hero-state"><strong>Full-Stack Developer</strong> building secure, production-grade systems — from air-gapped government platforms to LiDAR geospatial pipelines.</p>
-        <a class="hero-cue magnetic" href="#about" aria-label="Scroll to about section"><span>↓</span></a>
+        <p class="hero-state"><strong>Computer Science Student &amp; Software Developer</strong> building internal applications, exploring applied AI, and learning secure software engineering.</p>
+        <a class="hero-cue" href="#about" aria-label="Scroll to about section"><span>↓</span></a>
       </div>
     </div>
   </section>
-
-  <!-- MARQUEE -->
-  <div class="marquee" aria-hidden="true">
-    <div class="mq-track">
-      <span class="mq-inner">Full-Stack Developer <i>✦</i> Secure Systems <i>✦</i> LiDAR Pipelines <i>✦</i> Air-Gapped Platforms <i>✦</i> React <i>✦</i> Node.js <i>✦</i> TypeScript <i>✦</i> Docker <i>✦</i></span>
-      <span class="mq-inner">Full-Stack Developer <i>✦</i> Secure Systems <i>✦</i> LiDAR Pipelines <i>✦</i> Air-Gapped Platforms <i>✦</i> React <i>✦</i> Node.js <i>✦</i> TypeScript <i>✦</i> Docker <i>✦</i></span>
-    </div>
-  </div>
 
   <!-- ABOUT -->
   <section class="section" id="about">
     <div class="sec-head">
       <p class="sec-label" data-reveal><span class="sec-num">01</span>About</p>
-      <h2 class="sec-title" data-split>The person <em>behind</em> the code</h2>
+      <h2 class="sec-title" data-reveal>The person <em>behind</em> the code</h2>
     </div>
-    <p class="about-statement" data-scrub>A Computer Science student with a Tier-1 work ethic — I build secure, production-grade systems, learn fast, and treat reliability as a feature, not an afterthought.</p>
+    <p class="about-statement" data-reveal>Computer Science student and student software developer. I build useful internal applications, take ownership of ambiguous problems, and keep learning at the intersection of software, AI and security.</p>
     <div class="about-grid">
-      <div class="about-bio" data-reveal>
-        <p>I'm a <strong>highly motivated Computer Science student</strong> at the Open University, characterized by a relentless work ethic and a <strong>'Tier-1' approach to problem-solving</strong>. A quick learner who thrives in fast-paced environments, I'm always eager to master new technologies.</p>
-        <p>My security background instilled a deep sense of <strong>responsibility and discipline</strong>. I'm a results-oriented team player committed to delivering high-quality, scalable code — and I actively follow AI advancements, eager to put modern tech to work.</p>
-      </div>
+      <div class="about-bio" data-reveal><p>I'm studying for a B.Sc. in Computer Science at the Open University of Israel while working as a <strong>Student Software Developer</strong> at the Geological Survey of Israel. I independently brought Silica from an idea to production, established a security review procedure for external libraries, and use AI coding agents to support hands-on development. I'm also building my SecDevOps knowledge and interested in applied AI and security engineering.</p></div>
       <ul class="about-facts">
-        <li class="fact" data-reveal><span class="fact-i">(01)</span><div><strong>Jerusalem, Israel</strong><em>Based &amp; working locally</em></div></li>
-        <li class="fact" data-reveal data-delay="0.05"><span class="fact-i">(02)</span><div><strong>Geological Survey of Israel</strong><em>Student Dev · Secure Systems</em></div></li>
-        <li class="fact" data-reveal data-delay="0.1"><span class="fact-i">(03)</span><div><strong>Open University of Israel</strong><em>B.Sc. Computer Science</em></div></li>
-        <li class="fact" data-reveal data-delay="0.15"><span class="fact-i">(04)</span><div><strong>LiDAR &amp; Geospatial</strong><em>Dead Sea data pipelines</em></div></li>
-        <li class="fact" data-reveal data-delay="0.2"><span class="fact-i">(05)</span><div><strong>Secure Development</strong><em>Air-gapped · RBAC · Audit</em></div></li>
+        <li class="fact" data-reveal><span class="fact-i">(01)</span><div><strong>Jerusalem, Israel</strong><em>Based in Israel</em></div></li>
+        <li class="fact" data-reveal data-delay="0.05"><span class="fact-i">(02)</span><div><strong>Geological Survey of Israel</strong><em>Student Software Developer · Jun 2025 — Present</em></div></li>
+        <li class="fact" data-reveal data-delay="0.1"><span class="fact-i">(03)</span><div><strong>Open University of Israel</strong><em>B.Sc. Computer Science · Expected 2027</em></div></li>
+        <li class="fact" data-reveal data-delay="0.15"><span class="fact-i">(04)</span><div><strong>Areas of interest</strong><em>Applied AI · Software Security · Research</em></div></li>
       </ul>
     </div>
-    <div class="values">
-      <div class="value" data-reveal><i>01 — RESILIENCE</i><h3>Built to last</h3><p>Balancing a complex life, academic load, and demanding work without breaking.</p></div>
-      <div class="value" data-reveal data-delay="0.1"><i>02 — CURIOSITY</i><h3>Always learning</h3><p>Forward-thinking and actively following AI advancements, eager to integrate modern tech.</p></div>
-      <div class="value" data-reveal data-delay="0.2"><i>03 — DISCIPLINE</i><h3>Trusted by default</h3><p>A security background proving reliability — someone you can completely trust with a system.</p></div>
+    <div class="stats" aria-label="Career highlights">
+      <div class="stat" data-reveal><b class="stat-n">01</b><span>Independently launched production application</span></div>
+      <div class="stat" data-reveal data-delay="0.08"><b class="stat-n">01</b><span>Required third-party library security review procedure</span></div>
+      <div class="stat" data-reveal data-delay="0.16"><b class="stat-n">03</b><span>AI coding tools used in hands-on development</span></div>
     </div>
   </section>
 
@@ -472,7 +386,7 @@ body.cursor-labeled #cur-label{display:block}
   <section class="section" id="experience">
     <div class="sec-head">
       <p class="sec-label" data-reveal><span class="sec-num">02</span>Experience</p>
-      <h2 class="sec-title" data-split>Where I've <em>worked</em></h2>
+      <h2 class="sec-title" data-reveal>Where I've <em>worked</em></h2>
     </div>
 
     <div class="line-draw"></div>
@@ -481,16 +395,17 @@ body.cursor-labeled #cur-label{display:block}
       <div class="xp-when">Jun 2025 — Present<br>Jerusalem, IL</div>
       <div>
         <h3 class="xp-role">Student Developer — Full-Stack &amp; Secure Systems</h3>
-        <a class="xp-org" data-cursor-label="VISIT" href="https://www.gsi.gov.il" target="_blank" rel="noopener">Geological Survey of Israel (GSI) ↗</a>
+        <a class="xp-org" href="https://www.gsi.gov.il" target="_blank" rel="noopener">Geological Survey of Israel (GSI) ↗</a>
         <ul class="xp-list">
-          <li>Designed and shipped <strong>Silica</strong> — a production IT inventory management system on an air-gapped network, acting as sole developer.</li>
-          <li>Processing raw <strong>LiDAR flight data</strong> from aerial surveys over the Dead Sea into 3D terrain models and research graphs.</li>
-          <li>Implemented strict JWT authentication, RBAC, and full audit trails for compliance.</li>
-          <li>Managing the internal <strong>GitLab</strong> instance and setting up <strong>CI/CD pipelines</strong>.</li>
-          <li>Built <strong>GSI Excellence</strong> — transformed a dense corporate procedures document into an intuitive, single-page accessibility portal with a pixel-perfect, minimalist UI for organization employees.</li>
-          <li>Spearheading <strong>AI adoption and tech innovation</strong> across the office; designing and conducting hands-on training sessions on modern AI tools for organization employees to optimize workflows and secure prompt workflows.</li>
+          <li><strong>Initiated and deployed Silica</strong>, an internal IT asset management application now used in production, taking it from identified need to working solution.</li>
+          <li>Built the application's structured data layer using <strong>SQLite and Prisma ORM</strong>.</li>
+          <li>Authored and implemented a <strong>third-party library security review procedure</strong>, adopted as a required step in the R&amp;D workflow.</li>
+          <li>Independently studying <strong>SecDevOps</strong> and helping advance its adoption; the planned implementation is being coordinated with an external provider.</li>
+          <li>Developed <strong>GSI Excellence</strong> from an open-ended request into a working internal information platform.</li>
+          <li>Started planning the modernization of a legacy <strong>.NET</strong> application for the Geochemistry department.</li>
+          <li>Use <strong>LLM coding agents</strong> to accelerate prototyping, troubleshoot issues and review generated code.</li>
         </ul>
-        <div class="tags"><span>React</span><span>Node.js</span><span>TypeScript</span><span>Docker</span><span>Python</span><span>LiDAR</span><span>SQLite</span><span>Prisma</span><span>GitLab CI</span></div>
+        <div class="tags"><span>Production Software</span><span>SQLite</span><span>Prisma ORM</span><span>Secure Development</span><span>LLM Coding Agents</span></div>
       </div>
     </article>
 
@@ -500,11 +415,10 @@ body.cursor-labeled #cur-label{display:block}
       <div class="xp-when">2025 — Present<br>Jerusalem, IL</div>
       <div>
         <h3 class="xp-role">Webmaster / Website Manager</h3>
-        <a class="xp-org" data-cursor-label="VISIT" href="https://www.igs.org.il/" target="_blank" rel="noopener">Israel Geological Society (IGS) ↗</a>
+        <a class="xp-org" href="https://www.igs.org.il/" target="_blank" rel="noopener">Israel Geological Society (IGS) ↗</a>
         <ul class="xp-list">
-          <li>Managing and maintaining the official organizational website built on the <strong>Wix</strong> platform.</li>
-          <li>Responsible for content updates, event publishing, and a seamless user experience for society members.</li>
-          <li>Handling site architecture, integrations, and ongoing technical support.</li>
+          <li>Manage the organization's official <strong>Wix</strong> website, including content updates, event publishing, and member-facing user experience.</li>
+          <li>Own site architecture, integrations, and ongoing technical support.</li>
         </ul>
         <div class="tags"><span>Wix</span><span>Web Management</span><span>CMS</span></div>
       </div>
@@ -518,10 +432,9 @@ body.cursor-labeled #cur-label{display:block}
         <h3 class="xp-role">Security Officer</h3>
         <span class="xp-org">Security Sector</span>
         <ul class="xp-list">
-          <li>Operating in highly sensitive and demanding environments requiring absolute focus and reliability.</li>
-          <li><strong>Crisis management:</strong> strong decision-making and the ability to remain calm and effective under extreme pressure.</li>
-          <li><strong>Risk mitigation:</strong> advanced situational awareness and rapid threat assessment protocols.</li>
-          <li><strong>Responsibility:</strong> a tier-1 work ethic with unwavering discipline and accountability — traits that translate directly into writing secure, mission-critical code.</li>
+          <li>Operate in sensitive, high-pressure environments requiring sustained focus, discretion, and reliability.</li>
+          <li>Make rapid decisions during crises using situational awareness, threat assessment, and risk-mitigation protocols.</li>
+          <li>Bring the same discipline, accountability, and calm execution to secure, mission-critical software work.</li>
         </ul>
         <div class="tags"><span>Risk Management</span><span>Crisis Resolution</span><span>Leadership</span></div>
       </div>
@@ -535,94 +448,64 @@ body.cursor-labeled #cur-label{display:block}
       <div class="sec-head">
         <div>
           <p class="sec-label" data-reveal><span class="sec-num">03</span>Projects</p>
-          <h2 class="sec-title" data-split>Selected <em>work</em></h2>
+          <h2 class="sec-title" data-reveal>Selected <em>work</em></h2>
         </div>
-        <span class="proj-counter" data-reveal><b id="proj-cur">01</b> / 05 — SCROLL</span>
+        <span class="proj-counter"><b id="proj-cur">01</b> / 05 — SCROLL</span>
       </div>
       <div class="proj-track" id="proj-track">
-
         <article class="proj-card">
           <div class="proj-cover">
-            <svg class="cover-art" viewBox="0 0 600 400" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-              <defs><pattern id="pgrid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0H0V40" fill="none" stroke="currentColor" stroke-opacity=".3"/></pattern></defs>
-              <rect width="600" height="400" fill="url(#pgrid)"/>
-              <rect x="120" y="80" width="40" height="40" fill="var(--accent)" opacity=".9"/>
-              <rect x="320" y="120" width="40" height="40" fill="var(--accent)" opacity=".4"/>
-              <rect x="400" y="200" width="40" height="40" fill="currentColor" opacity=".4"/>
-              <rect x="240" y="240" width="40" height="40" fill="currentColor" opacity=".25"/>
-              <rect x="480" y="80" width="40" height="40" fill="currentColor" opacity=".18"/>
-              <rect x="160" y="320" width="40" height="40" fill="var(--accent)" opacity=".25"/>
-              <path d="M0 360H600" stroke="var(--accent)" stroke-opacity=".6" stroke-dasharray="6 8"/>
-              <circle cx="140" cy="100" r="4" fill="var(--accent)"/>
-            </svg>
+            <svg class="cover-art" viewBox="0 0 600 400" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><defs><pattern id="pgrid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0H0V40" fill="none" stroke="currentColor" stroke-opacity=".3"/></pattern></defs><rect width="600" height="400" fill="url(#pgrid)"/><rect x="120" y="80" width="40" height="40" fill="var(--accent)" opacity=".9"/><rect x="320" y="120" width="40" height="40" fill="var(--accent)" opacity=".4"/><rect x="400" y="200" width="40" height="40" fill="currentColor" opacity=".4"/><rect x="240" y="240" width="40" height="40" fill="currentColor" opacity=".25"/><rect x="480" y="80" width="40" height="40" fill="currentColor" opacity=".18"/><rect x="160" y="320" width="40" height="40" fill="var(--accent)" opacity=".25"/><path d="M0 360H600" stroke="var(--accent)" stroke-opacity=".6" stroke-dasharray="6 8"/><circle cx="140" cy="100" r="4" fill="var(--accent)"/></svg>
             <span class="proj-num">01</span>
           </div>
           <div class="proj-info">
-            <span class="proj-chip">✦ Featured — Production System</span>
-            <h3 class="proj-name">Silica — IT Inventory Management</h3>
-            <p class="proj-desc">A comprehensive full-stack inventory platform for IT departments in high-security, air-gapped government environments. Engineered complex asset-lifecycle business logic, managing granular state transformations and status flows (such as tracking items from 'Approved for Trash' to 'Disabled'). Features smart catalog-sequencing, strict JWT + RBAC security, server-side data extraction, and bulk TypeScript data pipelines — containerized entirely by hand.</p>
-            <div class="tags"><span>React</span><span>Node.js</span><span>Prisma</span><span>Docker</span><span>JWT</span><span>RBAC</span></div>
+            <span class="proj-chip">✦ Featured · Production Application</span>
+            <h3 class="proj-name">Silica — IT Asset Management</h3>
+            <p class="proj-desc">Initiated, designed and delivered an internal IT asset management application now used in production. Built structured asset workflows and application data persistence with <strong>SQLite and Prisma ORM</strong>.</p>
+            <div class="tags"><span>Web Application</span><span>SQLite</span><span>Prisma ORM</span><span>Data Modeling</span></div>
           </div>
         </article>
 
         <article class="proj-card">
           <div class="proj-cover">
-            <svg class="cover-art" id="topo-svg" viewBox="0 0 600 400" preserveAspectRatio="xMidYMid slice" aria-hidden="true"></svg>
+            <svg class="cover-art" viewBox="0 0 600 400" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><defs><pattern id="memgrid" width="34" height="34" patternUnits="userSpaceOnUse"><path d="M34 0H0V34" fill="none" stroke="currentColor" opacity=".14"/></pattern></defs><rect width="600" height="400" fill="url(#memgrid)"/><rect x="105" y="78" width="385" height="242" rx="17" fill="none" stroke="currentColor" opacity=".32"/><circle cx="135" cy="106" r="6" fill="var(--accent)"/><circle cx="155" cy="106" r="6" fill="currentColor" opacity=".4"/><path d="M120 136H474" stroke="currentColor" opacity=".22"/><text x="139" y="218" font-family="monospace" font-size="77" font-weight="700" fill="var(--accent)">{ C }</text><text x="142" y="269" font-family="monospace" font-size="21" fill="currentColor">PASS 1 → PASS 2</text><path d="M342 172H459M342 197H439M342 223H459M342 249H415" stroke="currentColor" stroke-width="7" stroke-linecap="round" opacity=".3"/></svg>
             <span class="proj-num">02</span>
           </div>
           <div class="proj-info">
-            <span class="proj-chip">Geospatial · R&amp;D</span>
-            <h3 class="proj-name">Dead Sea LiDAR Pipeline</h3>
-            <p class="proj-desc">Scripts that clean and process raw aerial LiDAR survey data, converting massive point clouds into analyzable 3D terrain models and elevation graphs for scientists.</p>
-            <div class="tags"><span>Python</span><span>Data Parsing</span><span>3D Geo</span></div>
+            <span class="proj-chip">University · Systems Programming</span>
+            <h3 class="proj-name">Two-Pass Assembler in C</h3>
+            <p class="proj-desc">Collaborated on a modular assembler built in <strong>ANSI C90</strong>, covering macro preprocessing, symbol management, instruction parsing and systematic edge-case testing.</p>
+            <div class="tags"><span>C (ANSI C90)</span><span>Parsing</span><span>Symbol Tables</span><span>Git &amp; GitHub</span></div>
           </div>
         </article>
 
         <article class="proj-card">
           <div class="proj-cover">
-            <svg class="cover-art" viewBox="0 0 600 400" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-              <defs><pattern id="pmem" width="28" height="18" patternUnits="userSpaceOnUse"><rect x="3" y="5" width="20" height="8" rx="2" fill="currentColor" opacity=".18"/></pattern></defs>
-              <rect width="600" height="400" fill="url(#pmem)"/>
-              <text x="300" y="240" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="130" fill="none" stroke="var(--accent)" stroke-width="1.5" opacity=".9">{ C }</text>
-              <rect x="59" y="95" width="20" height="8" rx="2" fill="var(--accent)"/>
-              <rect x="479" y="293" width="20" height="8" rx="2" fill="var(--accent)" opacity=".6"/>
-            </svg>
+            <svg class="cover-art" viewBox="0 0 600 400" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><defs><pattern id="docsgrid" width="44" height="44" patternUnits="userSpaceOnUse"><path d="M44 0H0V44" fill="none" stroke="currentColor" stroke-opacity=".22"/></pattern></defs><rect width="600" height="400" fill="url(#docsgrid)"/><rect x="150" y="70" width="180" height="14" rx="7" fill="var(--accent)" opacity=".9"/><rect x="150" y="110" width="300" height="8" rx="4" fill="currentColor" opacity=".35"/><rect x="150" y="134" width="260" height="8" rx="4" fill="currentColor" opacity=".25"/><rect x="150" y="158" width="290" height="8" rx="4" fill="currentColor" opacity=".25"/><rect x="150" y="206" width="120" height="8" rx="4" fill="var(--accent)" opacity=".55"/><rect x="150" y="230" width="300" height="8" rx="4" fill="currentColor" opacity=".18"/><rect x="150" y="254" width="240" height="8" rx="4" fill="currentColor" opacity=".18"/><path d="M150 310H450" stroke="var(--accent)" stroke-opacity=".6" stroke-dasharray="6 8"/><circle cx="450" cy="78" r="5" fill="var(--accent)"/></svg>
             <span class="proj-num">03</span>
           </div>
           <div class="proj-info">
-            <span class="proj-chip">Systems · Low-Level</span>
-            <h3 class="proj-name">Systems Programming Lab</h3>
-            <p class="proj-desc">Low-level system utilities in Linux emphasizing memory footprint optimization, robust process synchronization, and manual file operations in C.</p>
-            <div class="tags"><span>C</span><span>Linux</span><span>WSL</span></div>
+            <span class="proj-chip">Internal Platform · UI/UX</span>
+            <h3 class="proj-name"><a href="https://gsiexcellence.page/" target="_blank" rel="noopener">GSI Excellence ↗</a></h3>
+            <p class="proj-desc">Turned an open-ended internal request and dense procedural information into a usable web platform. Organized complex content into a clear, accessible experience for employees.</p>
+            <div class="tags"><span>Web Development</span><span>Information Architecture</span><span>UI/UX</span></div>
           </div>
         </article>
 
         <article class="proj-card">
           <div class="proj-cover">
-            <svg class="cover-art" viewBox="0 0 600 400" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-              <defs><pattern id="pdoc" width="44" height="44" patternUnits="userSpaceOnUse"><path d="M44 0H0V44" fill="none" stroke="currentColor" stroke-opacity=".22"/></pattern></defs>
-              <rect width="600" height="400" fill="url(#pdoc)"/>
-              <rect x="150" y="70" width="180" height="14" rx="7" fill="var(--accent)" opacity=".9"/>
-              <rect x="150" y="110" width="300" height="8" rx="4" fill="currentColor" opacity=".35"/>
-              <rect x="150" y="134" width="260" height="8" rx="4" fill="currentColor" opacity=".25"/>
-              <rect x="150" y="158" width="290" height="8" rx="4" fill="currentColor" opacity=".25"/>
-              <rect x="150" y="206" width="120" height="8" rx="4" fill="var(--accent)" opacity=".55"/>
-              <rect x="150" y="230" width="300" height="8" rx="4" fill="currentColor" opacity=".18"/>
-              <rect x="150" y="254" width="240" height="8" rx="4" fill="currentColor" opacity=".18"/>
-              <path d="M150 310H450" stroke="var(--accent)" stroke-opacity=".6" stroke-dasharray="6 8"/>
-              <circle cx="450" cy="78" r="5" fill="var(--accent)"/>
-            </svg>
+            <svg class="cover-art" viewBox="0 0 600 400" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><defs><pattern id="aigrid" width="38" height="38" patternUnits="userSpaceOnUse"><path d="M38 0H0V38" fill="none" stroke="currentColor" stroke-opacity=".14"/></pattern></defs><rect width="600" height="400" fill="url(#aigrid)"/><g fill="none" stroke="currentColor" stroke-width="2" opacity=".55"><path d="M145 200L260 120L386 190L466 113M145 200L258 293L386 190L465 289M260 120L258 293"/></g><g fill="var(--panel-2)" stroke="var(--accent)" stroke-width="4"><circle cx="145" cy="200" r="25"/><circle cx="260" cy="120" r="25"/><circle cx="258" cy="293" r="25"/><circle cx="386" cy="190" r="30"/><circle cx="466" cy="113" r="22"/><circle cx="465" cy="289" r="22"/></g><g fill="var(--accent)"><circle cx="145" cy="200" r="7"/><circle cx="260" cy="120" r="7"/><circle cx="258" cy="293" r="7"/><circle cx="386" cy="190" r="10"/><circle cx="466" cy="113" r="6"/><circle cx="465" cy="289" r="6"/></g></svg>
             <span class="proj-num">04</span>
           </div>
           <div class="proj-info">
-            <span class="proj-chip">Geospatial &amp; Corporate · UI/UX</span>
-            <h3 class="proj-name"><a data-cursor-label="OPEN" href="https://gsiexcellence.page/" target="_blank" rel="noopener">GSI Excellence — Civil Service Accessibility Portal ↗</a></h3>
-            <p class="proj-desc">Transformed a dense, multi-page corporate Word document regarding complex civil service procedures into an intuitive, high-performance single-page web application. Re-architected the entire information hierarchy from scratch, delivering a pixel-perfect, ultra-clean minimalist UI that ensures exceptional readability and a seamless user experience for organization employees.</p>
-            <div class="tags"><span>React</span><span>TypeScript</span><span>UI/UX Design</span><span>Information Architecture</span><span>Tailwind CSS</span></div>
+            <span class="proj-chip">Applied AI · Engineering Workflow</span>
+            <h3 class="proj-name">AI-Assisted Development</h3>
+            <p class="proj-desc">Use <strong>Claude, Gemini and Codex</strong> in day-to-day engineering for iterative prompting, context management, rapid prototyping, debugging and critical review of generated output.</p>
+            <div class="tags"><span>LLM Coding Agents</span><span>Prompt Engineering</span><span>Context Management</span><span>Output Review</span></div>
           </div>
         </article>
 
-        <a class="proj-end" data-cursor-label="OPEN" href="https://github.com/Moshiko-Sarig" target="_blank" rel="noopener">
+        <a class="proj-end" href="https://github.com/Moshiko-Sarig" target="_blank" rel="noopener">
           <b>↗</b>
           <span>More on GitHub</span>
         </a>
@@ -636,26 +519,26 @@ body.cursor-labeled #cur-label{display:block}
   <section class="section" id="education">
     <div class="sec-head">
       <p class="sec-label" data-reveal><span class="sec-num">04</span>Education</p>
-      <h2 class="sec-title" data-split>The <em>learning</em> curve</h2>
+      <h2 class="sec-title" data-reveal>The <em>learning</em> curve</h2>
     </div>
     <div class="edu-grid">
       <div class="edu-card" data-reveal>
         <div class="edu-year">MAR 2025 — ONGOING</div>
         <div class="edu-degree">B.Sc. Computer Science</div>
         <div class="edu-school">The Open University of Israel</div>
-        <div class="edu-detail">Semester 2025B · Algorithms · Data Structures · Operating Systems · Networks</div>
+        <div class="edu-detail">Expected 2027 · Logic in Computer Science (87), System Programming in C (80), Data Structures &amp; Algorithms (in progress), Calculus, Linear Algebra.</div>
       </div>
       <div class="edu-card" data-reveal data-delay="0.1">
         <div class="edu-year">2022 — 2023</div>
         <div class="edu-degree">Full-Stack Bootcamp</div>
         <div class="edu-school">John Bryce Academy · Tel Aviv</div>
-        <div class="edu-detail">600 hours of practical intensive training covering modern Frontend, Backend, and DevOps workflows.</div>
+        <div class="edu-detail">595-hour Full-Stack Web Development program, including SQL and web application development.</div>
       </div>
       <div class="edu-card" data-reveal data-delay="0.2">
         <div class="edu-year">JUN 2025 — ONGOING</div>
-        <div class="edu-degree">Secure Development</div>
+        <div class="edu-degree">Secure Development &amp; Learning</div>
         <div class="edu-school">On-the-Job · GSI</div>
-        <div class="edu-detail">Applied real-world secure environments: air-gapped networking, JWT, RBAC, IIS deployments.</div>
+        <div class="edu-detail">Practical third-party library security reviews, Yahav requirements validation and independent SecDevOps study.</div>
       </div>
     </div>
   </section>
@@ -664,55 +547,29 @@ body.cursor-labeled #cur-label{display:block}
   <section class="section" id="skills">
     <div class="sec-head">
       <p class="sec-label" data-reveal><span class="sec-num">05</span>Skills</p>
-      <h2 class="sec-title" data-split>Tools <em>of the</em> trade</h2>
+      <h2 class="sec-title" data-reveal>Tools <em>of the</em> trade</h2>
     </div>
     <div id="skills-static">
     <div class="line-draw"></div>
-    <div class="skill-row" data-reveal>
-      <span class="skill-cat"><i>(01)</i>Frontend</span>
-      <div class="skill-tags"><span>React</span><span>Angular</span><span>TypeScript</span><span>Tailwind CSS</span><span>Material UI</span></div>
-    </div>
+    <div class="skill-row" data-reveal><span class="skill-cat"><i>(01)</i>Frontend</span><div class="skill-tags"><span>React</span><span>Angular</span><span>TypeScript</span><span>Tailwind CSS</span><span>Material UI</span></div></div>
     <div class="line-draw"></div>
-    <div class="skill-row" data-reveal>
-      <span class="skill-cat"><i>(02)</i>Backend</span>
-      <div class="skill-tags"><span>Node.js</span><span>Express</span><span>Python</span><span>Java</span><span>REST APIs</span></div>
-    </div>
+    <div class="skill-row" data-reveal><span class="skill-cat"><i>(02)</i>Backend &amp; Languages</span><div class="skill-tags"><span>Node.js</span><span>Express</span><span>C (ANSI C90)</span><span>REST APIs</span><span>Python (basic)</span><span>Java (basic)</span></div></div>
     <div class="line-draw"></div>
-    <div class="skill-row" data-reveal>
-      <span class="skill-cat"><i>(03)</i>Databases</span>
-      <div class="skill-tags"><span>SQL</span><span>MongoDB</span><span>SQLite</span><span>Prisma ORM</span></div>
-    </div>
+    <div class="skill-row" data-reveal><span class="skill-cat"><i>(03)</i>Databases</span><div class="skill-tags"><span>SQL</span><span>SQLite</span><span>Prisma ORM</span><span>MongoDB</span></div></div>
     <div class="line-draw"></div>
-    <div class="skill-row" data-reveal>
-      <span class="skill-cat"><i>(04)</i>DevOps &amp; Tools</span>
-      <div class="skill-tags"><span>Docker</span><span>GitLab CI/CD</span><span>WSL / Linux</span><span>Bash Scripting</span><span>Git</span></div>
-    </div>
+    <div class="skill-row" data-reveal><span class="skill-cat"><i>(04)</i>Tools &amp; AI</span><div class="skill-tags"><span>Git &amp; GitHub</span><span>GitLab CI/CD (familiar)</span><span>Docker (basic)</span><span>WSL / Linux</span><span>Bash Scripting</span><span>Claude</span><span>Gemini</span><span>Codex</span><span>Prompt Engineering</span><span>SecDevOps (learning)</span></div></div>
     <div class="line-draw"></div>
-    </div>
-
-    <div class="skills-lab" id="skills-lab" hidden>
-      <ul class="lab-legend" aria-hidden="true">
-        <li class="l1"><i></i>Frontend</li>
-        <li class="l2"><i></i>Backend</li>
-        <li class="l3"><i></i>Databases</li>
-        <li class="l4"><i></i>DevOps &amp; Tools</li>
-      </ul>
-      <div class="lab-stage" id="lab-stage" data-hover data-cursor-label="DRAG" aria-hidden="true">
-        <button type="button" class="lab-reset" id="lab-reset" tabindex="-1">↺ Reset</button>
-        <span class="lab-note">Physics enabled — grab a tool</span>
-      </div>
-    </div>
-  </section>
+    </div></section>
 
   <!-- CONTACT -->
   <section class="section contact" id="contact">
     <p class="sec-label" data-reveal><span class="sec-num">06</span>Contact</p>
-    <h2 class="contact-title" data-split>Let's build <em>something</em> great</h2>
-    <p class="contact-lede" data-reveal>Open to student and part-time roles, collaborations, and complex systems architecture problems. Whether you have a challenging position in mind or just want to talk about tech — I'd love to hear from you.</p>
-    <a class="contact-mail magnetic" data-cursor-label="WRITE" data-reveal href="mailto:moshikosarig1@gmail.com">moshikosarig1@gmail.com <span>↗</span></a>
+    <h2 class="contact-title" data-reveal>Let's build <em>something</em> great</h2>
+    <p class="contact-lede" data-reveal>Open to student and junior opportunities in software engineering, applied AI and security. Interested in curious teammates, practical problems and products that make a real difference.</p>
+    <a class="contact-mail" data-reveal href="mailto:moshikosarig1@gmail.com">moshikosarig1@gmail.com <span>↗</span></a>
     <ul class="contact-socials" data-reveal>
-      <li><a data-cursor-label="OPEN" href="https://www.linkedin.com/in/moshe-sarig-675847349/" target="_blank" rel="noopener">LinkedIn ↗</a></li>
-      <li><a data-cursor-label="OPEN" href="https://github.com/Moshiko-Sarig" target="_blank" rel="noopener">GitHub ↗</a></li>
+      <li><a href="https://www.linkedin.com/in/moshe-sarig-675847349/" target="_blank" rel="noopener">LinkedIn ↗</a></li>
+      <li><a href="https://github.com/Moshiko-Sarig" target="_blank" rel="noopener">GitHub ↗</a></li>
       <li><a href="tel:+972503069494">050-306-9494</a></li>
       <li><button type="button" id="copy-mail" data-mail="moshikosarig1@gmail.com">Copy email</button></li>
     </ul>
@@ -730,9 +587,7 @@ body.cursor-labeled #cur-label{display:block}
 
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/matter-js@0.19.0/build/matter.min.js"></script>
 <script>
 (function(){
 'use strict';
@@ -741,102 +596,9 @@ var REDUCED = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 var FINE = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
 var SMALL = window.innerWidth < 768;
 var scrollP = 0; // global scroll progress 0..1
-var lenis = null;
-var preDone = false;
-var LAB = false; // physics skills playground active
 
 function qs(s, c){ return (c || document).querySelector(s); }
 function qsa(s, c){ return Array.prototype.slice.call((c || document).querySelectorAll(s)); }
-
-function killPreloader(){
-  var p = qs('#preloader');
-  if (p && p.parentNode) p.parentNode.removeChild(p);
-  preDone = true;
-}
-
-/* ------------------------------------------------------------------
-   Terminal-style text decode
------------------------------------------------------------------- */
-var SCR_CHARS = '█▓▒░<>/+*#';
-function scramble(el, finalText, dur){
-  if (!el) return;
-  if (REDUCED){ el.textContent = finalText; return; }
-  var len = finalText.length;
-  var t0 = Date.now();
-  function step(){
-    var p = Math.min(1, (Date.now() - t0) / dur);
-    var reveal = Math.floor(p * len), out = '';
-    for (var i = 0; i < len; i++){
-      out += i < reveal ? finalText[i]
-           : (finalText[i] === ' ' ? ' ' : SCR_CHARS[(Math.random() * SCR_CHARS.length) | 0]);
-    }
-    el.textContent = out;
-    if (p < 1) requestAnimationFrame(step);
-  }
-  requestAnimationFrame(step);
-}
-
-/* ------------------------------------------------------------------
-   Split text into masked word/char spans (markup-preserving)
------------------------------------------------------------------- */
-function splitToSpans(el, type, mask){
-  var targets = [];
-  function process(node){
-    if (node.nodeType === 3){
-      var parent = node.parentNode;
-      var frag = document.createDocumentFragment();
-      var parts = node.textContent.split(/(\s+)/);
-      parts.forEach(function(p){
-        if (!p) return;
-        if (/^\s+$/.test(p)){ frag.appendChild(document.createTextNode(' ')); return; }
-        var units = (type === 'chars') ? p.split('') : [p];
-        units.forEach(function(u){
-          var inner = document.createElement('span');
-          inner.textContent = u;
-          if (mask){
-            inner.className = 'msk-i';
-            var outer = document.createElement('span');
-            outer.className = 'msk';
-            outer.appendChild(inner);
-            frag.appendChild(outer);
-          } else {
-            inner.style.display = 'inline-block';
-            frag.appendChild(inner);
-          }
-          targets.push(inner);
-        });
-      });
-      parent.replaceChild(frag, node);
-    } else if (node.nodeType === 1 && !(node.classList && (node.classList.contains('msk') || node.classList.contains('msk-i')))){
-      Array.prototype.slice.call(node.childNodes).forEach(process);
-    }
-  }
-  var label = el.textContent;
-  Array.prototype.slice.call(el.childNodes).forEach(process);
-  el.setAttribute('aria-label', label);
-  return targets;
-}
-
-/* ------------------------------------------------------------------
-   Topographic SVG cover (LiDAR project card)
------------------------------------------------------------------- */
-function buildTopo(){
-  var svg = qs('#topo-svg');
-  if (!svg) return;
-  var W = 600, H = 400, rows = 10, html = '';
-  for (var r = 0; r < rows; r++){
-    var y0 = 36 + r * (H - 72) / (rows - 1);
-    var d = 'M0 ' + y0.toFixed(1);
-    for (var x = 0; x <= W; x += 16){
-      var y = y0 + Math.sin(x * 0.02 + r * 0.9) * 15 + Math.sin(x * 0.047 + r * 2.1) * 7;
-      d += ' L' + x + ' ' + y.toFixed(1);
-    }
-    var hot = (r === 5);
-    html += '<path d="' + d + '" fill="none" stroke="' + (hot ? 'var(--accent)' : 'currentColor') +
-            '" stroke-width="' + (hot ? 1.6 : 1) + '" opacity="' + (hot ? 0.95 : 0.45) + '"/>';
-  }
-  svg.innerHTML = html;
-}
 
 /* ------------------------------------------------------------------
    Jerusalem clock
@@ -854,59 +616,6 @@ function initClock(){
   }
   tick();
   setInterval(tick, 1000);
-}
-
-/* ------------------------------------------------------------------
-   Custom cursor (fine pointers only)
------------------------------------------------------------------- */
-function initCursor(){
-  if (!FINE || !window.gsap) return;
-  var dot = qs('#cur-dot'), ring = qs('#cur-ring');
-  var x = window.innerWidth / 2, y = window.innerHeight / 2, rx = x, ry = y;
-  window.addEventListener('mousemove', function(e){
-    x = e.clientX; y = e.clientY;
-    dot.style.transform = 'translate(' + x + 'px,' + y + 'px)';
-  }, { passive: true });
-  gsap.ticker.add(function(){
-    rx += (x - rx) * 0.16;
-    ry += (y - ry) * 0.16;
-    ring.style.transform = 'translate(' + rx + 'px,' + ry + 'px)';
-  });
-  var label = qs('#cur-label');
-  document.addEventListener('mouseover', function(e){
-    if (!e.target.closest) return;
-    if (e.target.closest('a, button, [data-hover]')) document.body.classList.add('is-hovering');
-    var lt = e.target.closest('[data-cursor-label]');
-    if (lt && label){
-      label.textContent = lt.getAttribute('data-cursor-label');
-      document.body.classList.add('cursor-labeled');
-    }
-  });
-  document.addEventListener('mouseout', function(e){
-    if (!e.target.closest) return;
-    if (e.target.closest('a, button, [data-hover]')) document.body.classList.remove('is-hovering');
-    if (e.target.closest('[data-cursor-label]')) document.body.classList.remove('cursor-labeled');
-  });
-}
-
-/* ------------------------------------------------------------------
-   Letters spring up under the cursor (after their reveal completes)
------------------------------------------------------------------- */
-function initCharHover(){
-  if (!FINE || REDUCED || !window.gsap) return;
-  ['.hero-title', '.contact-title'].forEach(function(sel){
-    var container = qs(sel);
-    if (!container) return;
-    container.addEventListener('mouseover', function(e){
-      var ch = e.target;
-      if (!ch.classList || !ch.classList.contains('msk-i') || ch.getAttribute('data-busy')) return;
-      if (!container.classList.contains('revealed') && !container.classList.contains('split-done')) return;
-      ch.setAttribute('data-busy', '1');
-      gsap.timeline({ onComplete: function(){ ch.removeAttribute('data-busy'); } })
-        .to(ch, { yPercent: -24, duration: 0.16, ease: 'power2.out' })
-        .to(ch, { yPercent: 0, duration: 0.6, ease: 'elastic.out(1.2, 0.5)' });
-    });
-  });
 }
 
 /* ------------------------------------------------------------------
@@ -939,56 +648,64 @@ function initCopyMail(){
 }
 
 /* ------------------------------------------------------------------
-   Magnetic elements
------------------------------------------------------------------- */
-function initMagnetic(){
-  if (!FINE || REDUCED || !window.gsap) return;
-  qsa('.magnetic').forEach(function(el){
-    var xTo = gsap.quickTo(el, 'x', { duration: 0.5, ease: 'power3' });
-    var yTo = gsap.quickTo(el, 'y', { duration: 0.5, ease: 'power3' });
-    el.addEventListener('mousemove', function(e){
-      var r = el.getBoundingClientRect();
-      xTo((e.clientX - (r.left + r.width / 2)) * 0.32);
-      yTo((e.clientY - (r.top + r.height / 2)) * 0.32);
-    });
-    el.addEventListener('mouseleave', function(){ xTo(0); yTo(0); });
-  });
-}
-
-/* ------------------------------------------------------------------
    Mobile menu overlay
 ------------------------------------------------------------------ */
 function initMenu(){
   var btn = qs('#menu-btn'), menu = qs('#menu');
   if (!btn || !menu) return;
   var open = false, tl = null;
+  var menuFocusables = qsa('.m-link, .m-foot a', menu);
+  var restoreFocus = null;
 
   if (window.gsap && !REDUCED){
     tl = gsap.timeline({
       paused: true,
+      onComplete: function(){ if (open && menuFocusables[0]) menuFocusables[0].focus(); },
       onReverseComplete: function(){ gsap.set(menu, { display: 'none' }); }
     });
     tl.set(menu, { display: 'flex' })
-      .fromTo(menu, { clipPath: 'inset(0 0 100% 0)' }, { clipPath: 'inset(0 0 0% 0)', duration: 0.65, ease: 'power4.inOut' })
-      .fromTo('.m-link', { yPercent: 130 }, { yPercent: 0, duration: 0.7, stagger: 0.06, ease: 'power4.out' }, '-=0.25')
-      .fromTo('.m-foot', { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.45 }, '-=0.4');
+      .fromTo(menu, { clipPath: 'inset(0 0 100% 0)' }, { clipPath: 'inset(0 0 0% 0)', duration: 0.45, ease: 'power4.inOut' })
+      .fromTo('.m-link', { yPercent: 120 }, { yPercent: 0, duration: 0.45, stagger: 0.035, ease: 'power4.out' }, '-=0.18')
+      .fromTo('.m-foot', { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.3 }, '-=0.25');
   }
 
   function setState(next){
+    if (next) restoreFocus = document.activeElement;
     open = next;
     btn.classList.toggle('open', open);
     btn.setAttribute('aria-expanded', String(open));
     btn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
     menu.setAttribute('aria-hidden', String(!open));
-    if (lenis){ open ? lenis.stop() : lenis.start(); }
-    document.documentElement.style.overflow = open && !lenis ? 'hidden' : '';
+    document.documentElement.style.overflow = open ? 'hidden' : '';
     if (tl){ open ? tl.play() : tl.reverse(); }
-    else { menu.style.display = open ? 'flex' : 'none'; menu.style.clipPath = 'inset(0 0 0% 0)'; }
+    else {
+      menu.style.display = open ? 'flex' : 'none';
+      menu.style.clipPath = 'inset(0 0 0% 0)';
+      if (open && menuFocusables[0]) menuFocusables[0].focus();
+    }
+    if (!open && restoreFocus && restoreFocus.focus) restoreFocus.focus();
   }
 
   btn.addEventListener('click', function(){ setState(!open); });
-  document.addEventListener('keydown', function(e){ if (e.key === 'Escape' && open) setState(false); });
-  qsa('.m-link, .m-foot a', menu).forEach(function(a){
+  document.addEventListener('keydown', function(e){
+    if (!open) return;
+    if (e.key === 'Escape'){
+      e.preventDefault();
+      setState(false);
+      return;
+    }
+    if (e.key === 'Tab' && menuFocusables.length){
+      var last = menuFocusables[menuFocusables.length - 1];
+      if (e.shiftKey && document.activeElement === btn){
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last){
+        e.preventDefault();
+        btn.focus();
+      }
+    }
+  });
+  menuFocusables.forEach(function(a){
     a.addEventListener('click', function(){ if (open) setState(false); });
   });
 }
@@ -1004,135 +721,22 @@ function initAnchors(){
       var target = qs(id);
       if (!target) return;
       e.preventDefault();
-      if (lenis) lenis.scrollTo(target, { offset: -60, duration: 1.4 });
-      else target.scrollIntoView({ behavior: REDUCED ? 'auto' : 'smooth' });
+      if (a.classList.contains('skip-link')){
+        try { target.focus({ preventScroll: true }); } catch(err){ target.focus(); }
+        target.scrollIntoView({ behavior: 'auto' });
+        return;
+      }
+      var scrollTarget = target;
+      if (id === '#projects' && target.parentElement && target.parentElement.classList.contains('pin-spacer')){
+        scrollTarget = target.parentElement;
+      }
+      scrollTarget.scrollIntoView({ behavior: REDUCED ? 'auto' : 'smooth' });
     });
   });
 }
 
 /* ------------------------------------------------------------------
-   Skills physics playground (Matter.js, desktop only)
-   Static rows stay in the DOM (visually hidden) for SR + fallback.
------------------------------------------------------------------- */
-var labState = null;
-
-function prepLab(){
-  try {
-    var staticEl = qs('#skills-static'), lab = qs('#skills-lab'), stage = qs('#lab-stage');
-    if (!staticEl || !lab || !stage) return false;
-    var data = [];
-    qsa('.skill-row', staticEl).forEach(function(row, ci){
-      qsa('.skill-tags span', row).forEach(function(t){ data.push({ t: t.textContent, c: ci }); });
-    });
-    if (!data.length) return false;
-    data.forEach(function(d){
-      var s = document.createElement('span');
-      s.className = 'lab-pill cat-' + d.c;
-      s.textContent = d.t;
-      stage.appendChild(s);
-    });
-    staticEl.classList.add('sr-static');
-    lab.hidden = false;
-    return true;
-  } catch(e){ return false; }
-}
-
-function revertLab(){
-  var staticEl = qs('#skills-static'), lab = qs('#skills-lab');
-  if (staticEl) staticEl.classList.remove('sr-static');
-  if (lab) lab.hidden = true;
-  LAB = false;
-}
-
-function initLabPhysics(){
-  if (labState) return;
-  try {
-    var M = window.Matter, stage = qs('#lab-stage');
-    var pills = qsa('.lab-pill', stage);
-    var W = stage.clientWidth || 800, H = stage.clientHeight || 480;
-    var engine = M.Engine.create({ enableSleeping: true });
-    var world = engine.world;
-    function wall(x, y, w, h){ return M.Bodies.rectangle(x, y, w, h, { isStatic: true }); }
-    // floor + tall side walls (no ceiling: tossed pills fall back in)
-    var walls = [wall(W / 2, H + 100, W * 3 + 400, 200), wall(-100, -H, 200, H * 8), wall(W + 100, -H, 200, H * 8)];
-    M.Composite.add(world, walls);
-
-    var bodies = [];
-    pills.forEach(function(el, i){
-      var w = el.offsetWidth || (el.textContent.length * 9 + 44);
-      var h = el.offsetHeight || 40;
-      var x = 50 + Math.random() * Math.max(W - 100, 100);
-      var b = M.Bodies.rectangle(x, -40 - i * 54, w, h, {
-        chamfer: { radius: Math.min(h / 2, 19) },
-        restitution: 0.35, friction: 0.4, frictionAir: 0.012,
-        angle: (Math.random() - 0.5) * 0.4
-      });
-      bodies.push(b);
-      setTimeout(function(){
-        M.Composite.add(world, b);
-        el.style.opacity = '1';
-      }, i * 70);
-    });
-
-    var mouse = M.Mouse.create(stage);
-    var mc = M.MouseConstraint.create(engine, { mouse: mouse, constraint: { stiffness: 0.15, render: { visible: false } } });
-    M.Composite.add(world, mc);
-    // Matter's mouse captures wheel events and blocks page scroll — undo that
-    ['mousewheel', 'DOMMouseScroll', 'wheel'].forEach(function(ev){
-      try { stage.removeEventListener(ev, mouse.mousewheel); } catch(e){}
-    });
-
-    labState = { inView: true };
-    var fc = 0;
-    gsap.ticker.add(function(t, dt){
-      if (!labState.inView) return;
-      M.Engine.update(engine, Math.min(dt || 16.7, 33));
-      for (var i = 0; i < bodies.length; i++){
-        var b = bodies[i];
-        pills[i].style.transform = 'translate(' + b.position.x.toFixed(1) + 'px,' + b.position.y.toFixed(1) +
-                                   'px) translate(-50%,-50%) rotate(' + b.angle.toFixed(3) + 'rad)';
-      }
-      if (++fc % 150 === 0){
-        var W2 = stage.clientWidth || W, H2 = stage.clientHeight || H;
-        bodies.forEach(function(b){
-          if (b.position.y > H2 + 320 || b.position.x < -240 || b.position.x > W2 + 240){
-            M.Body.setPosition(b, { x: W2 / 2, y: -60 });
-            M.Body.setVelocity(b, { x: 0, y: 0 });
-          }
-        });
-      }
-    });
-
-    var reset = qs('#lab-reset');
-    if (reset){
-      reset.addEventListener('mousedown', function(e){ e.stopPropagation(); });
-      reset.addEventListener('click', function(){
-        bodies.forEach(function(b, i){
-          M.Body.setPosition(b, { x: 50 + Math.random() * Math.max((stage.clientWidth || W) - 100, 100), y: -40 - i * 50 });
-          M.Body.setVelocity(b, { x: 0, y: 0 });
-          M.Body.setAngularVelocity(b, 0);
-          M.Sleeping.set(b, false);
-        });
-      });
-    }
-
-    var rT;
-    window.addEventListener('resize', function(){
-      clearTimeout(rT);
-      rT = setTimeout(function(){
-        var W2 = stage.clientWidth || W, H2 = stage.clientHeight || H;
-        M.Body.setPosition(walls[0], { x: W2 / 2, y: H2 + 100 });
-        M.Body.setPosition(walls[2], { x: W2 + 100, y: -H2 });
-      }, 250);
-    });
-  } catch(e){
-    revertLab();
-    if (window.console) console.error(e);
-  }
-}
-
-/* ------------------------------------------------------------------
-   Three.js — LiDAR-style terrain point cloud
+   Three.js — decorative background point cloud
 ------------------------------------------------------------------ */
 function initTerrain(){
   var canvas = qs('#webgl');
@@ -1149,7 +753,7 @@ function initTerrain(){
   renderer.setSize(window.innerWidth, window.innerHeight);
 
   var scene = new THREE.Scene();
-  scene.fog = new THREE.FogExp2(0x0a0a09, 0.0115);
+  scene.fog = new THREE.FogExp2(0x0f1520, 0.0115);
 
   var camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 1, 600);
   camera.position.set(0, 26, 92);
@@ -1160,7 +764,7 @@ function initTerrain(){
   var pos = geo.attributes.position.array;
   var count = pos.length / 3;
   var base = new Float32Array(count);
-  var rdist = new Float32Array(count); // radial distance, for the LiDAR sweep
+  var rdist = new Float32Array(count); // radial distance, for the accent pulse
   var minY = Infinity, maxY = -Infinity;
 
   for (var i = 0, j = 0; i < pos.length; i += 3, j++){
@@ -1179,8 +783,8 @@ function initTerrain(){
 
   // Elevation-based vertex colors: dark soil -> bone, peaks tipped accent
   var colors = new Float32Array(pos.length);
-  var cLow = new THREE.Color(0x2e2c26), cMid = new THREE.Color(0x8a867c),
-      cHigh = new THREE.Color(0xece9e2), cAcc = new THREE.Color(0xff4d12);
+  var cLow = new THREE.Color(0x232c3d), cMid = new THREE.Color(0x7c8aa0),
+      cHigh = new THREE.Color(0xe9edf4), cAcc = new THREE.Color(0x8ab4f8);
   var tmp = new THREE.Color();
   for (var i2 = 0, j2 = 0; i2 < pos.length; i2 += 3, j2++){
     var t = (base[j2] - minY) / (maxY - minY || 1);
@@ -1212,7 +816,17 @@ function initTerrain(){
 
   var clock = new THREE.Clock();
   var sweep = !SMALL && !REDUCED;
+  var active = !document.hidden;
+  function updateActive(){
+    var hero = qs('#hero');
+    active = !document.hidden && window.scrollY < ((hero ? hero.offsetHeight : window.innerHeight) * 1.25);
+    if (!window.gsap || !window.ScrollTrigger || REDUCED) canvas.style.opacity = active ? '0.45' : '0';
+  }
+  window.addEventListener('scroll', updateActive, { passive: true });
+  document.addEventListener('visibilitychange', updateActive);
+  updateActive();
   function frame(){
+    if (!active) return;
     var t = clock.getElapsedTime();
     if (!REDUCED){
       for (var i = 0, j = 0; i < pos.length; i += 3, j++){
@@ -1221,16 +835,16 @@ function initTerrain(){
       geo.attributes.position.needsUpdate = true;
     }
     if (sweep){
-      // LiDAR scan: a ring of accent-bright points expanding from the center
+      // Accent pulse: a ring of bright points expanding from the center
       var scanR = (t * 26) % 280;
       var colArr = geo.attributes.color.array;
       for (var i3 = 0, j3 = 0; i3 < colArr.length; i3 += 3, j3++){
         var f = 1 - Math.abs(rdist[j3] - scanR) * 0.0625; // band width 16
         if (f > 0){
           f *= f;
-          colArr[i3]     = baseCol[i3]     + (1.0  - baseCol[i3])     * f;
-          colArr[i3 + 1] = baseCol[i3 + 1] + (0.45 - baseCol[i3 + 1]) * f;
-          colArr[i3 + 2] = baseCol[i3 + 2] + (0.18 - baseCol[i3 + 2]) * f;
+          colArr[i3]     = baseCol[i3]     + (0.54 - baseCol[i3])     * f;
+          colArr[i3 + 1] = baseCol[i3 + 1] + (0.71 - baseCol[i3 + 1]) * f;
+          colArr[i3 + 2] = baseCol[i3 + 2] + (0.97 - baseCol[i3 + 2]) * f;
         } else {
           colArr[i3] = baseCol[i3];
           colArr[i3 + 1] = baseCol[i3 + 1];
@@ -1248,7 +862,7 @@ function initTerrain(){
   }
 
   if (REDUCED || !window.gsap){
-    canvas.style.opacity = '0.5';
+    canvas.style.opacity = '0.45';
     frame();
     if (!window.gsap && !REDUCED){
       (function loop(){ frame(); requestAnimationFrame(loop); })();
@@ -1261,176 +875,129 @@ function initTerrain(){
 /* ------------------------------------------------------------------
    Scroll-driven animations (full-motion path)
 ------------------------------------------------------------------ */
+function initScrollState(){
+  var nav = qs('#nav');
+  function update(){
+    var root = document.documentElement;
+    scrollP = root.scrollTop / ((root.scrollHeight - root.clientHeight) || 1);
+    if (nav) nav.classList.toggle('scrolled', window.scrollY > 60);
+  }
+  window.addEventListener('scroll', update, { passive: true });
+  update();
+}
+
 function initScrollFX(){
+  if (REDUCED || !window.gsap || !window.ScrollTrigger) return;
   gsap.registerPlugin(ScrollTrigger);
 
-  // Lenis smooth scroll
-  lenis = new Lenis({ duration: 1.15 });
-  document.documentElement.classList.add('lenis');
-  var nav = qs('#nav');
-  lenis.on('scroll', function(e){
-    scrollP = e.progress || 0;
-    nav.classList.toggle('scrolled', (e.scroll || 0) > 60);
-    ScrollTrigger.update();
-  });
-  gsap.ticker.add(function(time){ lenis.raf(time * 1000); });
-  gsap.ticker.lagSmoothing(0);
-
-  // Physics skills lab (desktop): swap static rows out before reveal wiring
-  LAB = !!(window.Matter && FINE && window.matchMedia('(min-width: 1024px)').matches);
-  if (LAB) LAB = prepLab();
-  // Elements hidden for the lab swap must not get reveal effects (kept for SR)
-  function inHiddenStatic(el){ return LAB && el.closest && el.closest('#skills-static'); }
-
-  // Generic reveals
+  // One quiet reveal language across the page.
   qsa('[data-reveal]').forEach(function(el){
-    if (inHiddenStatic(el)) return;
-    gsap.set(el, { autoAlpha: 0, y: 34 });
+    gsap.set(el, { autoAlpha: 0, y: 12 });
     ScrollTrigger.create({
-      trigger: el, start: 'top 88%', once: true,
+      trigger: el,
+      start: 'top 90%',
+      once: true,
       onEnter: function(){
-        gsap.to(el, { autoAlpha: 1, y: 0, duration: 1, ease: 'power3.out', delay: parseFloat(el.getAttribute('data-delay')) || 0 });
-      }
-    });
-  });
-
-  // Masked word reveals for titles
-  qsa('[data-split]').forEach(function(el){
-    var words = splitToSpans(el, 'words', true);
-    gsap.set(words, { yPercent: 120 });
-    ScrollTrigger.create({
-      trigger: el, start: 'top 86%', once: true,
-      onEnter: function(){
-        gsap.to(words, {
-          yPercent: 0, duration: 1.1, ease: 'power4.out', stagger: 0.04,
-          onComplete: function(){ el.classList.add('split-done'); }
+        gsap.to(el, {
+          autoAlpha: 1,
+          y: 0,
+          duration: 0.65,
+          ease: 'power3.out',
+          delay: Math.min(parseFloat(el.getAttribute('data-delay')) || 0, 0.12)
         });
       }
     });
   });
 
-  // About statement — word-by-word scrub
-  var st = qs('[data-scrub]');
-  if (st){
-    var words = splitToSpans(st, 'words', false);
-    gsap.set(words, { opacity: 0.13 });
-    gsap.to(words, {
-      opacity: 1, stagger: 0.05, ease: 'none',
-      scrollTrigger: { trigger: st, start: 'top 80%', end: 'bottom 45%', scrub: 0.4 }
-    });
-  }
-
-  // Section divider lines
-  qsa('.line-draw').forEach(function(el){
-    if (inHiddenStatic(el)) return;
-    gsap.set(el, { scaleX: 0, transformOrigin: 'left center' });
+  // Proof points keep one restrained data moment.
+  qsa('.stat-n').forEach(function(el){
+    var target = parseInt(el.getAttribute('data-count'), 10);
+    if (isNaN(target)) return;
+    var suffix = el.getAttribute('data-suffix') || '';
+    var pad = parseInt(el.getAttribute('data-pad'), 10) || 0;
+    var obj = { n: 0 };
     ScrollTrigger.create({
-      trigger: el, start: 'top 92%', once: true,
-      onEnter: function(){ gsap.to(el, { scaleX: 1, duration: 1.2, ease: 'power3.inOut' }); }
-    });
-  });
-
-  // Side HUD: section label (decoded) + scroll percentage
-  var hudSec = qs('#hud-sec'), hudFill = qs('#hud-fill'), hudPct = qs('#hud-pct');
-  if (hudSec){
-    var hudCur = '', hudShown = -1;
-    [['#hero', '00 — INTRO'], ['#about', '01 — ABOUT'], ['#experience', '02 — EXPERIENCE'],
-     ['#projects', '03 — WORK'], ['#education', '04 — EDUCATION'], ['#skills', '05 — STACK'],
-     ['#contact', '06 — CONTACT']].forEach(function(p){
-      ScrollTrigger.create({
-        trigger: p[0], start: 'top 50%', end: 'bottom 50%',
-        onToggle: function(s){
-          if (s.isActive && hudCur !== p[1]){ hudCur = p[1]; scramble(hudSec, p[1], 420); }
-        }
-      });
-    });
-    gsap.ticker.add(function(){
-      var pct = Math.round(scrollP * 100);
-      if (pct !== hudShown){
-        hudShown = pct;
-        hudPct.textContent = ('00' + pct).slice(-3);
-        hudFill.style.transform = 'scaleY(' + scrollP + ')';
+      trigger: el,
+      start: 'top 90%',
+      once: true,
+      onEnter: function(){
+        gsap.to(obj, {
+          n: target,
+          duration: 1,
+          ease: 'power2.out',
+          onUpdate: function(){
+            var v = String(Math.round(obj.n));
+            if (pad) while (v.length < pad) v = '0' + v;
+            el.textContent = v + suffix;
+          }
+        });
       }
     });
-  }
+  });
 
-  // Hero parallax out
   gsap.to('.hero-inner', {
-    yPercent: -10, autoAlpha: 0.25, ease: 'none',
+    yPercent: -6,
+    autoAlpha: 0.42,
+    ease: 'none',
     scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true }
   });
-
-  // Terrain canvas fades down after hero
   gsap.fromTo('#webgl', { opacity: 1 }, {
-    opacity: 0.14, ease: 'none', immediateRender: false,
-    scrollTrigger: { trigger: '#about', start: 'top 95%', end: 'top 25%', scrub: true }
+    opacity: 0,
+    ease: 'none',
+    immediateRender: false,
+    scrollTrigger: { trigger: '#about', start: 'top 100%', end: 'top 45%', scrub: true }
   });
 
-  // Marquee — infinite, speeds up with scroll velocity
-  var mqTween = gsap.to('.mq-track', { xPercent: -50, repeat: -1, duration: 28, ease: 'none' });
-  var mqBoost = 0;
-  lenis.on('scroll', function(e){
-    var v = Math.abs(e.velocity || 0) * 0.05;
-    if (v > mqBoost) mqBoost = Math.min(v, 3);
-  });
-  gsap.ticker.add(function(){
-    mqBoost *= 0.94;
-    mqTween.timeScale(1 + mqBoost);
-  });
-
-  // Projects — pinned horizontal scroll on desktop, with live counter
+  // Horizontal work gallery is progressive enhancement only.
   var mm = gsap.matchMedia();
-  mm.add('(min-width: 1024px)', function(){
+  mm.add('(min-width: 1024px) and (prefers-reduced-motion: no-preference)', function(){
+    var root = document.documentElement;
     var track = qs('#proj-track');
     var section = qs('#projects');
     var bar = qs('#proj-progress-i');
     var cur = qs('#proj-cur');
-    var nPanels = qsa('#proj-track > *').length || 1;
-    var dist = function(){ return Math.max(0, track.scrollWidth - document.documentElement.clientWidth); };
-    var tween = gsap.to(track, {
-      x: function(){ return -dist(); },
-      ease: 'none',
-      scrollTrigger: {
-        trigger: section,
-        start: 'top top',
-        end: function(){ return '+=' + dist(); },
-        scrub: 1,
-        pin: true,
-        anticipatePin: 1,
-        invalidateOnRefresh: true,
-        onUpdate: function(self){
-          if (bar) gsap.set(bar, { scaleX: self.progress });
-          if (cur){
-            var idx = Math.min(nPanels, 1 + Math.floor(self.progress * nPanels * 0.9999));
-            var s = ('0' + idx).slice(-2);
-            if (cur.textContent !== s) cur.textContent = s;
+    if (!track || !section) return;
+    var tween = null;
+    try {
+      root.classList.add('projects-enhanced');
+      var nPanels = qsa('#proj-track > *').length || 1;
+      var dist = function(){ return Math.max(0, track.scrollWidth - root.clientWidth); };
+      tween = gsap.to(track, {
+        x: function(){ return -dist(); },
+        ease: 'none',
+        scrollTrigger: {
+          trigger: section,
+          start: 'top top',
+          end: function(){ return '+=' + dist(); },
+          scrub: 0.8,
+          pin: true,
+          anticipatePin: 1,
+          invalidateOnRefresh: true,
+          onUpdate: function(self){
+            if (bar) gsap.set(bar, { scaleX: self.progress });
+            if (cur){
+              var idx = Math.min(nPanels, 1 + Math.floor(self.progress * nPanels * 0.9999));
+              cur.textContent = ('0' + idx).slice(-2);
+            }
           }
         }
-      }
-    });
-    // Cover art parallax inside the horizontal container
-    qsa('.proj-card .cover-art').forEach(function(art){
-      gsap.fromTo(art, { xPercent: -4 }, {
-        xPercent: 4, ease: 'none',
-        scrollTrigger: {
-          trigger: art.closest('.proj-card'),
-          containerAnimation: tween,
-          start: 'left right',
-          end: 'right left',
-          scrub: true
-        }
       });
-    });
+    } catch(e){
+      root.classList.remove('projects-enhanced');
+      gsap.set(track, { clearProps: 'transform' });
+      if (window.console) console.error(e);
+    }
+    return function(){
+      if (tween){
+        if (tween.scrollTrigger) tween.scrollTrigger.kill();
+        tween.kill();
+      }
+      root.classList.remove('projects-enhanced');
+      gsap.set(track, { clearProps: 'transform' });
+      if (bar) gsap.set(bar, { clearProps: 'transform' });
+      if (cur) cur.textContent = '01';
+    };
   });
-
-  // Spawn the physics pills when the section approaches; sleep it off-screen
-  if (LAB){
-    ScrollTrigger.create({ trigger: '#skills', start: 'top 75%', once: true, onEnter: initLabPhysics });
-    ScrollTrigger.create({
-      trigger: '#skills', start: 'top bottom', end: 'bottom top',
-      onToggle: function(s){ if (labState) labState.inView = s.isActive; }
-    });
-  }
 
   if (document.fonts && document.fonts.ready){
     document.fonts.ready.then(function(){ ScrollTrigger.refresh(); });
@@ -1438,99 +1005,45 @@ function initScrollFX(){
 }
 
 /* ------------------------------------------------------------------
-   Preloader + hero intro
+   Short hero intro
 ------------------------------------------------------------------ */
 function initIntro(){
-  var pre = qs('#preloader');
-  var num = qs('#pre-num');
-  var heroChars = [];
-  qsa('.hero-line').forEach(function(line){
-    heroChars = heroChars.concat(splitToSpans(line, 'chars', true));
-  });
-  gsap.set(heroChars, { yPercent: 120 });
-  gsap.set(['.hero-eyebrow', '.hero-foot > *'], { autoAlpha: 0, y: 26 });
-  gsap.set('#nav', { autoAlpha: 0, y: -24 });
-
-  if (lenis) lenis.stop();
-
-  var counter = { n: 0 };
-  var tl = gsap.timeline({
-    onComplete: function(){
-      killPreloader();
-      if (lenis) lenis.start();
-      var ht = qs('.hero-title');
-      if (ht) ht.classList.add('revealed');
-    }
-  });
-  tl.to(counter, {
-      n: 100, duration: 1.4, ease: 'power2.inOut',
-      onUpdate: function(){ num.textContent = Math.round(counter.n); }
-    })
-    .to('#pre-bar', { scaleX: 1, duration: 1.4, ease: 'power2.inOut' }, 0)
-    .to(pre, { yPercent: -100, duration: 0.85, ease: 'power4.inOut' }, '+=0.12')
-    .to(heroChars, { yPercent: 0, duration: 1.25, ease: 'power4.out', stagger: 0.035 }, '-=0.42')
-    .to('#webgl', { opacity: 1, duration: 2, ease: 'power2.out' }, '-=1.2')
-    .to('.hero-eyebrow', {
-      autoAlpha: 1, y: 0, duration: 0.9, ease: 'power3.out',
-      onStart: function(){
-        qsa('.hero-eyebrow .scr').forEach(function(s){ scramble(s, s.textContent, 750); });
-      }
-    }, '-=1.05')
-    .to('.hero-foot > *', { autoAlpha: 1, y: 0, duration: 0.9, stagger: 0.08, ease: 'power3.out' }, '-=0.9')
-    .to('#nav', { autoAlpha: 1, y: 0, duration: 0.8, ease: 'power3.out' }, '-=0.85');
-
-  // Failsafe: never trap the page behind the preloader
-  setTimeout(function(){
-    if (!preDone){
-      tl.progress(1);
-    }
-  }, 6000);
+  if (REDUCED || !window.gsap) return;
+  gsap.timeline({ defaults: { ease: 'power3.out' } })
+    .fromTo('#nav', { autoAlpha: 0, y: -14 }, { autoAlpha: 1, y: 0, duration: 0.55 }, 0)
+    .fromTo('.hero-line', { autoAlpha: 0, y: 28 }, { autoAlpha: 1, y: 0, duration: 0.7, stagger: 0.08 }, 0.04)
+    .fromTo('.hero-eyebrow', { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.55 }, 0.16)
+    .fromTo('.hero-foot > *', { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.6, stagger: 0.06 }, 0.22)
+    .to('#webgl', { opacity: 1, duration: 0.8, ease: 'power2.out' }, 0);
 }
 
 /* ------------------------------------------------------------------
    Bootstrap
 ------------------------------------------------------------------ */
 function init(){
-  buildTopo();
-  initClock();
-  initMenu();
-  initAnchors();
-  initCursor();
-  initCopyMail();
-
-  try {
-    console.log('%cMOSHE SARIG', 'font-family:monospace;font-size:22px;font-weight:bold;color:#ff4d12',
-      '\n→ full-stack developer, jerusalem\n→ moshikosarig1@gmail.com\n→ you read consoles. we should talk.');
-  } catch(e){}
-
-  if (!window.gsap || REDUCED){
-    // Reduced-motion / no-GSAP path: everything stays visible, no effects
-    killPreloader();
-    var hud = qs('#hud');
-    if (hud) hud.style.display = 'none';
-    var nav = qs('#nav');
-    window.addEventListener('scroll', function(){
-      nav.classList.toggle('scrolled', window.scrollY > 60);
-      var h = document.documentElement;
-      scrollP = h.scrollTop / ((h.scrollHeight - h.clientHeight) || 1);
-    }, { passive: true });
-    initTerrain();
-    return;
+  function safe(fn){
+    try { fn(); } catch(e){ if (window.console) console.error(e); }
   }
 
-  initScrollFX();
-  initMagnetic();
-  initCharHover();
-  initTerrain();
-  initIntro();
+  safe(initClock);
+  safe(initMenu);
+  safe(initAnchors);
+  safe(initCopyMail);
+  safe(initScrollState);
+  safe(initTerrain);
+  safe(initIntro);
+  safe(initScrollFX);
+
+  try {
+    console.log('%cMOSHE SARIG', 'font-family:monospace;font-size:22px;font-weight:bold;color:#8ab4f8',
+      '\n→ full-stack developer, jerusalem\n→ moshikosarig1@gmail.com\n→ you read consoles. we should talk.');
+  } catch(e){}
 }
 
 if (document.readyState === 'loading'){
-  document.addEventListener('DOMContentLoaded', function(){
-    try { init(); } catch(e){ killPreloader(); if (window.console) console.error(e); }
-  });
+  document.addEventListener('DOMContentLoaded', init);
 } else {
-  try { init(); } catch(e){ killPreloader(); if (window.console) console.error(e); }
+  init();
 }
 })();
 </script>
